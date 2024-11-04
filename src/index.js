@@ -5,7 +5,7 @@ export default {
 			const { results } = await env.DB.prepare('SELECT * FROM data_videos').all();
 
 			// 生成 HTML 页面
-			let html = `<!DOCTYPE html>
+			let html = `<!DOCTYPE html> 
       <html>
       <head>
         <title>视频网站</title>
