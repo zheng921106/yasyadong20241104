@@ -8,7 +8,7 @@ export default {
 			let html = `<!DOCTYPE html> 
       <html>
       <head>
-        <title>视频网站</title>
+        <title>视频网站</title> 
         <style>
           /* 页面样式 */
           body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; }
