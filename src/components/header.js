@@ -1,19 +1,23 @@
 // src/components/header.js
 
+import 'element-plus/dist/index.css';
+
 export function renderHeader() {
     return `
     <div class="global-header">
       <div class="header-left">
         <img src="your-logo-url.png" alt="Logo" class="logo">
-        <nav class="menu">
-          <div class="menu-item">yas 오리지널</div>
-          <div class="menu-item">yas 플러스</div>
-          <div class="menu-item">기타 메뉴</div>
-        </nav>
+        <el-menu mode="horizontal" background-color="#333" text-color="#fff" active-text-color="#ff6b6b">
+          <el-submenu index="1">
+            <template #title><i class="el-icon-menu"></i> yas 오리지널</template>
+            <el-menu-item index="1-1">yas 오리지널</el-menu-item>
+            <el-menu-item index="1-2">yas 플러스</el-menu-item>
+          </el-submenu>
+          <el-menu-item index="2">기타 메뉴</el-menu-item>
+        </el-menu>
       </div>
       <div class="header-center">
-        <input type="text" placeholder="Search..." class="search-bar">
-        <button class="search-button">&#x1F50D;</button>
+        <el-input placeholder="Search..." suffix-icon="el-icon-search" class="search-bar"></el-input>
       </div>
       <div class="header-right">
         <a href="/login" class="login-link">로그인 / 회원가입</a>
@@ -37,40 +41,17 @@ export function renderHeader() {
         width: 40px;
         margin-right: 10px;
       }
-      .menu {
-        display: flex;
-        gap: 15px;
-      }
-      .menu-item {
-        color: #fff;
-        cursor: pointer;
-      }
-      .menu-item:hover {
-        color: #ff6b6b;
+      .el-menu {
+        background-color: transparent;
       }
       .header-center {
         flex-grow: 1;
         display: flex;
         justify-content: center;
-        align-items: center;
       }
       .search-bar {
-        padding: 5px;
-        border-radius: 15px 0 0 15px;
-        border: none;
-        outline: none;
-        width: 200px;
-      }
-      .search-button {
-        padding: 5px 10px;
-        background-color: #333;
-        border: none;
-        border-radius: 0 15px 15px 0;
-        color: #fff;
-        cursor: pointer;
-      }
-      .search-button:hover {
-        background-color: #555;
+        max-width: 400px;
+        width: 100%;
       }
       .header-right {
         margin-left: auto;
