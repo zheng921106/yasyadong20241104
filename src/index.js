@@ -1,18 +1,23 @@
+// src/pages/home.js
+import { renderHeader } from './components/header.js';
+
 export default {
 	async fetch(request, env, ctx) {
 		try {
 			// 从 D1 数据库中获取视频数据
 			const { results } = await env.DB.prepare('SELECT * FROM data_videos').all();
 
+			// 使用统一的 header
+			const header = renderHeader();
+
 			// 生成 HTML 页面
-			let html = `<!DOCTYPE html> 
+			let html = `<!DOCTYPE html>
       <html>
       <head>
-        <title>视频网站</title>   
+        <title>视频网站</title>
         <style>
-          /* 页面样式 */ 
+          /* 页面样式 */
           body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; }
-          .header { background-color: #1c1c1c; padding: 10px; text-align: center; font-size: 24px; }
           .video-container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 15px; }
           .video-item { width: 300px; background-color: #333; border-radius: 8px; overflow: hidden; }
           .video-thumbnail { position: relative; }
@@ -24,7 +29,7 @@ export default {
         </style>
       </head>
       <body>
-        <div class="header">欢迎来到我的视频网站</div>
+        ${header} <!-- 插入统一的 header -->
         <div class="video-container">
       `;
 
