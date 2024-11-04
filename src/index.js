@@ -10,7 +10,7 @@ export default {
       <head>
         <title>视频网站</title>   
         <style>
-          /* 页面样式 */
+          /* 页面样式 */ 
           body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; }
           .header { background-color: #1c1c1c; padding: 10px; text-align: center; font-size: 24px; }
           .video-container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 15px; }
