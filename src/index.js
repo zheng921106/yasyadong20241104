@@ -25,7 +25,7 @@ export default {
 			results.forEach(video => {
 				html += `
         <div class="video">
-          <h2>${video.title}</h2>
+          <h2>${video.title}</h2> 
           <video controls>
             <source src="${video.url}" type="video/mp4">
             您的浏览器不支持视频播放。
