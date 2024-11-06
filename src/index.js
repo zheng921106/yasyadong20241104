@@ -1,3 +1,4 @@
+/*
 // src/pages/home.js
 import { renderHeader } from './components/header.js';
 
@@ -16,7 +17,7 @@ export default {
       <head>
         <title>视频网站</title>
         <style>
-          /* 页面样式 */
+          /!* 页面样式 *!/
           body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; }
           .video-container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 15px; }
           .video-item { width: 300px; background-color: #333; border-radius: 8px; overflow: hidden; }
@@ -66,3 +67,4 @@ export default {
 		}
 	},
 };
+*/
