@@ -11,13 +11,13 @@ function applyStyles() {
       align-items: center; 
       padding: 10px 20px;
       background-color: #000;
-      color: #fff; 
+      color: #fff;   
     }
     .header-left {
       display: flex;
       align-items: center;
     }
-    .logo {
+    .logo { 
       width: 40px;
       margin-right: 10px;
     }
