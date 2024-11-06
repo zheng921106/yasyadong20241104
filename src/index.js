@@ -1,15 +1,11 @@
-/*
 // src/pages/home.js
-import { renderHeader } from './components/header.js';
+import { renderHeader } from './components/header/header.js';
 
 export default {
 	async fetch(request, env, ctx) {
 		try {
-			// 从 D1 数据库中获取视频数据
-			const { results } = await env.DB.prepare('SELECT * FROM data_videos').all();
-
-			// 使用统一的 header
-			const header = renderHeader();
+			// 使用统一的 header，等待 renderHeader 完成
+			const header = await renderHeader();
 
 			// 生成 HTML 页面
 			let html = `<!DOCTYPE html>
@@ -17,7 +13,7 @@ export default {
       <head>
         <title>视频网站</title>
         <style>
-          /!* 页面样式 *!/
+          /* 页面样式 */
           body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; }
           .video-container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 15px; }
           .video-item { width: 300px; background-color: #333; border-radius: 8px; overflow: hidden; }
@@ -32,26 +28,19 @@ export default {
       <body>
         ${header} <!-- 插入统一的 header -->
         <div class="video-container">
-      `;
-
-			// 遍历视频数据，添加到 HTML 中
-			results.forEach(video => {
-				html += `
+          <!-- 示例视频项目 -->
           <div class="video-item">
             <div class="video-thumbnail">
-              <img src="${video.thumbnail_url}" alt="${video.title}">
-              <div class="video-duration">${video.duration}</div>
+              <img src="https://example.com/thumbnail.jpg" alt="示例视频标题">
+              <div class="video-duration">5:30</div>
             </div>
             <div class="video-info">
-              <div class="video-title">${video.title}</div>
-              <div class="video-meta">观看次数 ${video.views} · ${video.upload_date}</div>
-              <p>${video.description}</p>
+              <div class="video-title">示例视频标题</div>
+              <div class="video-meta">观看次数 1000 · 2024-11-01</div>
+              <p>这是一个示例视频描述。</p>
             </div>
           </div>
-        `;
-			});
-
-			html += `
+          <!-- 可以添加更多示例视频 -->
         </div>
       </body>
       </html>`;
@@ -63,8 +52,7 @@ export default {
 
 		} catch (error) {
 			// 错误处理
-			return new Response(`数据库连接出错: ${error.message}`, { status: 500 });
+			return new Response(`页面加载出错: ${error.message}`, { status: 500 });
 		}
 	},
 };
-*/
