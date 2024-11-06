@@ -13,8 +13,8 @@ export function renderHeader() {
             <el-menu-item index="1-1">yas 오리지널</el-menu-item>
             <el-menu-item index="1-2">yas 플러스</el-menu-item>
           </el-submenu>
-          <el-menu-item index="2">기타 메뉴</el-menu-item>
-        </el-menu>
+          <el-menu-item index="2">기타 메뉴</el-menu-item> 
+        </el-menu>  
       </div>
       <div class="header-center">
         <el-input placeholder="Search..." suffix-icon="el-icon-search" class="search-bar"></el-input>
