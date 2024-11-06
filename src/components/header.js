@@ -8,7 +8,7 @@ function applyStyles() {
     .global-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: center; 
       padding: 10px 20px;
       background-color: #000;
       color: #fff;
