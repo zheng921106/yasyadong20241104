@@ -87,7 +87,7 @@ export function renderHeader() {
         </div>
       </el-header>
 
-      <el-container>
+      <el-container> 
         <el-aside width="200px" class="aside">Aside</el-aside>
         <el-container>
           <el-main class="main-content">Main Content</el-main>
