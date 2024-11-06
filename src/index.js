@@ -5,7 +5,7 @@ export default {
 	async fetch(request, env, ctx) {
 		try {
 			// 使用统一的 header，等待 renderHeader 完成
-			const header = await renderHeader();
+			const header =  renderHeader();
 
 			// 生成 HTML 页面
 			let html = `<!DOCTYPE html>

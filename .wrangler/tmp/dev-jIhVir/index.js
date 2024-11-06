@@ -978,17 +978,112 @@ var cloudflare_default2 = _process;
 globalThis.process = cloudflare_default2;
 
 // src/components/header/header.js
-async function renderHeader() {
-  const responseHtml = await fetch("./header.html");
-  const htmlContent = await responseHtml.text();
-  const container = document.createElement("div");
-  container.innerHTML = htmlContent;
-  const responseCss = await fetch("./header.css");
-  const cssContent = await responseCss.text();
-  const style = document.createElement("style");
-  style.textContent = cssContent;
-  document.head.appendChild(style);
-  return container.innerHTML;
+function renderHeader() {
+  return `
+    <div class="global-header">
+      <div class="header-left">
+        <img src="https://www.yasyadong.com/data/upload/common/07242086604829132.png" alt="Logo" class="logo">
+      </div>
+      <div class="header-center">
+        <input type="text" placeholder="Search..." class="search-bar">
+        <button class="search-button">&#x1F50D;</button>
+      </div>
+      <div class="header-right">
+        <a href="/login" class="login-link">\uB85C\uADF8\uC778 / \uD68C\uC6D0\uAC00\uC785</a>
+      </div>
+    </div>
+    <style lang="scss">
+     .global-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      height: 60px;
+      margin-right: 10px;
+    }
+  }
+
+  .header-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .search-bar {
+      padding: 5px;
+      border-radius: 15px 0 0 15px;
+      border: none;
+      outline: none;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .search-button {
+      padding: 5px 10px;
+      background-color: #333;
+      border: none;
+      border-radius: 0 15px 15px 0;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #555;
+      }
+    }
+  }
+
+  .header-right {
+    margin-left: auto;
+
+    .login-link {
+      color: #4e88ff;
+      text-decoration: none;
+      font-size: 16px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /* \u54CD\u5E94\u5F0F\u8C03\u6574 */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 10px;
+
+    .header-left,
+    .header-center,
+    .header-right {
+      width: 100%;
+      justify-content: center;
+      margin: 5px 0;
+    }
+
+    .header-center {
+      .search-bar {
+        width: 80%;
+        max-width: none;
+      }
+    }
+
+    .header-right {
+      .login-link {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+    </style>
+  `;
 }
 __name(renderHeader, "renderHeader");
 
@@ -996,7 +1091,7 @@ __name(renderHeader, "renderHeader");
 var src_default = {
   async fetch(request, env3, ctx) {
     try {
-      const header = await renderHeader();
+      const header = renderHeader();
       let html = `<!DOCTYPE html>
       <html>
       <head>
