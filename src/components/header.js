@@ -2,7 +2,69 @@
 
 import 'element-plus/dist/index.css';
 
+function applyStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+    .global-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+    .logo {
+      width: 40px;
+      margin-right: 10px;
+    }
+    .el-menu {
+      background-color: transparent;
+    }
+    .header-center {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+    .search-bar {
+      max-width: 400px;
+      width: 100%;
+    }
+    .header-right {
+      margin-left: auto;
+    }
+    .login-link {
+      color: #4e88ff;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .login-link:hover {
+      text-decoration: underline;
+    }
+    .aside {
+      background-color: #333;
+      color: #fff;
+      padding: 15px;
+    }
+    .main-content {
+      padding: 20px;
+    }
+    .footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+  `;
+    document.head.appendChild(style);
+}
+
 export function renderHeader() {
+    applyStyles();
+
     return `
     <el-container>
       <el-header class="global-header">
@@ -33,63 +95,5 @@ export function renderHeader() {
         </el-container>
       </el-container>
     </el-container>
-
-    <style>
-      /* Header 样式 */
-      .global-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #000;
-        color: #fff;
-      }
-      .header-left {
-        display: flex;
-        align-items: center;
-      }
-      .logo {
-        width: 40px;
-        margin-right: 10px;
-      }
-      .el-menu {
-        background-color: transparent;
-      }
-      .header-center {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-      }
-      .search-bar {
-        max-width: 400px;
-        width: 100%;
-      }
-      .header-right {
-        margin-left: auto;
-      }
-      .login-link {
-        color: #4e88ff;
-        text-decoration: none;
-        font-size: 16px;
-      }
-      .login-link:hover {
-        text-decoration: underline;
-      }
-      /* Aside, Main, Footer 样式 */
-      .aside {
-        background-color: #333;
-        color: #fff;
-        padding: 15px;
-      }
-      .main-content {
-        padding: 20px;
-      }
-      .footer {
-        background-color: #222;
-        color: #fff;
-        text-align: center;
-        padding: 10px 0;
-      }
-    </style>
   `;
 }
