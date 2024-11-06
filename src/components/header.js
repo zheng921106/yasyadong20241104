@@ -11,7 +11,7 @@ function applyStyles() {
       align-items: center; 
       padding: 10px 20px;
       background-color: #000;
-      color: #fff;
+      color: #fff; 
     }
     .header-left {
       display: flex;
