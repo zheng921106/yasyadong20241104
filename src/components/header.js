@@ -92,7 +92,7 @@ export function renderHeader() {
         <el-container>
           <el-main class="main-content">Main Content</el-main>
           <el-footer class="footer">Footer</el-footer>
-        </el-container>
+        </el-container> 
       </el-container>
     </el-container>
   `;
