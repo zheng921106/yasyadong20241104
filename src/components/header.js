@@ -11,7 +11,7 @@ export function renderHeader() {
           <el-submenu index="1">
             <template #title><i class="el-icon-menu"></i> yas 오리지널</template>
             <el-menu-item index="1-1">yas 오리지널</el-menu-item>
-            <el-menu-item index="1-2">yas 플러스</el-menu-item>
+            <el-menu-item index="1-2">yas 플러스</el-menu-item> 
           </el-submenu>
           <el-menu-item index="2">기타 메뉴</el-menu-item> 
         </el-menu>  
