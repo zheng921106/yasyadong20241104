@@ -6,7 +6,7 @@ export function renderHeader() {
     return `
     <div class="global-header">
       <div class="header-left">
-        <img src="your-logo-url.png" alt="Logo" class="logo">
+        <img src="https://www.yasyadong.com/data/upload/common/07242086604829132.png" alt="Logo" class="logo">
         <el-menu mode="horizontal" background-color="#333" text-color="#fff" active-text-color="#ff6b6b">
           <el-submenu index="1">
             <template #title><i class="el-icon-menu"></i> yas 오리지널</template>
