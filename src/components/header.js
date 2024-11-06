@@ -7,7 +7,7 @@ function applyStyles() {
     style.textContent = `
     .global-header {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; 
       align-items: center; 
       padding: 10px 20px;
       background-color: #000;
