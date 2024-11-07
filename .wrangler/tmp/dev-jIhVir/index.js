@@ -1263,6 +1263,19 @@ var src_default = {
         <!-- \u6A2A\u5411\u6EDA\u52A8\u7684 Banner \u533A\u57DF -->
         <div class="banner-container">
           <!-- Banner \u9879\u76EE\uFF08\u4FDD\u6301\u4E0D\u53D8\uFF09 -->
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi9zULC2Bg1ME1jFzHBi7gmVGVm2Ve6rGHRPWJ4zAPGs3oHJHX1G6MCbVZFqvuH5Q6hLcflzJoqD9gL0xJRSfJ3ZeY70Fk1IPm_cPKqgtIM8zDHBSBKDJyhmXgC5O2Fx0_r8qAcmhwVpsYVZl6is0w2s4Ze6XPtl2g4S0NPTO9omTZywEUoRtxlTW74JTrr" alt="Banner 1" style="width: 100%; height: auto;">
+          </div>
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh1iEMTiytqH0Qy_AkSVEIr0o7MmKrs8sj274MjiSXpVPZBUTpP2NHTEAm-3alvIcei0GuVv6qv0SoIqBjopOcrRZKtwx2e31aUI-uMKmqggiOucJkYFPkUyARMRyeZGT-XsgRzoum-zo1MgM-ryfZm29mIP8v5zxpplgDHAu_zHA_AO0JTtuxit2M_3gGQ" alt="Banner 2" style="width: 100%; height: auto;">
+          </div>
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhzdE6yUtQuf804pLW5v5_X9ibAEXRTHfER_VDMQt2h635hMF8hkdb6wK64AyHuotY5HmpEdOqAovvMyaf99yhkDHpqZZn_pPVigC6vwhQDRuxzOzYjdknpGn3pPplW1BZvXtOmu4Zv6fegocdP4uK7qdN2ZoyoT2wRZJTt4pJGi3-5hxlYqSDFxsih4W1V" alt="Banner 3" style="width: 100%; height: auto;">
+          </div>
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhg5WwBt_MN36seG5jAArLaJUv_Gm26n4CrEGHm2m8jLWwqS2eoakP2fI_7SrOaVlObhaLmyxBGkdMht7QDq_8XEZsLUaevVnozyE-iLtVxr921lRolOWxKOLELmoq3ma8quRnyQ8wTqMam3Byc1U061rQ7UTB9oQI3UFb1z_82Sj3Mmx7-TZtK-M0gExRy" alt="Banner 4" style="width: 100%; height: auto;">
+          </div>
+          <!-- \u53EF\u4EE5\u6DFB\u52A0\u66F4\u591A Banner \u9879\u76EE -->
         </div>
 
         <!-- Tab Navigation -->
@@ -1289,13 +1302,13 @@ var src_default = {
           ${results.results.map((row) => `
             <div class="video-item">
               <div class="video-thumbnail">
-                <img src="https://example.com/thumbnail.jpg" alt="\u793A\u4F8B\u89C6\u9891\u6807\u9898">
+                <img src="${row.thumbnail_url}" alt="${row.title}">
                 <div class="video-duration">5:30</div>
               </div>
               <div class="video-info">
-                <div class="video-title">${row.name || "\u793A\u4F8B\u89C6\u9891\u6807\u9898"}</div>
+                <div class="video-title">${row.title || "NoData"}</div>
                 <div class="video-meta">\u89C2\u770B\u6B21\u6570 ${row.views || 1e3} \xB7 2024-11-01</div>
-                <p>\u8FD9\u662F\u4E00\u4E2A\u793A\u4F8B\u89C6\u9891\u63CF\u8FF0\u3002</p>
+                <p>${row.description}\u3002</p>
               </div>
             </div>
           `).join("")}
