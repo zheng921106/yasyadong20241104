@@ -36,8 +36,126 @@ export default {
             background-color: #000;
             color: #fff;
           }
+.banner-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; 
+  padding: 10px;
+  background-color: #1a1a1a;
 
-          /* 其他样式... */
+  .banner-item {
+    flex: 1 0 calc(100% / 2 - 10px); 
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 273.3px;  
+    max-height: 84.8px; 
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+    }
+  }
+
+  @media (min-width: 768px) { 
+    .banner-item {
+      flex: 1 0 calc(100% / 6 - 10px); 
+    }
+  }
+}
+
+
+
+          .tab-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: #2b2b2b;
+            padding: 10px;
+          }
+
+          .tab {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #444;
+            cursor: pointer;
+            border-radius: 5px;
+          }
+
+          .tab.active {
+            background-color: #d32f2f;
+          }
+
+          .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 15px;
+            background-color: #121212;
+          }
+          .video-item {
+            width: 300px;
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+          }
+          .video-thumbnail {
+            position: relative;
+          }
+          .video-thumbnail img {
+            width: 100%;
+            height: auto;
+          }
+          .video-duration {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 12px;
+          }
+          .video-info {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .video-title {
+            font-size: 14px;
+            margin: 5px 0;
+            color: #ff6b6b;
+            text-align: center;
+          }
+          .video-meta {
+            font-size: 12px;
+            color: #aaa;
+            text-align: center;
+          }
+          .category-container {
+  			display: flex;
+  			justify-content: center;
+  			gap: 10px;
+  			padding: 10px;
+
+  			.category {
+  			 			 padding: 5px 10px;
+  			  border: 1px solid #ff6b6b;
+  			  border-radius: 5px;
+  			  color: #ff6b6b;
+  			  cursor: pointer;
+  			  background-color: transparent;
+  			 			 font-size: 14px;
+
+  			  &.active {
+  			    background-color: #ff6b6b;
+  			    color: #fff;
+  			  }
+  			}
         </style>
       </head>
       <body>
