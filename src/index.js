@@ -203,7 +203,7 @@ export default {
           ${results.results.map(row => `
             <div class="video-item">
               <div class="video-thumbnail">
-                <img :src="${row.thumbnail_url}" alt="${row.title}">
+                <img src="${row.thumbnail_url}" alt="${row.title}">
                 <div class="video-duration">5:30</div>
               </div>
               <div class="video-info">
