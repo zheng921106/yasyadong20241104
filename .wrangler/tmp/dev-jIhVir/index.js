@@ -1302,7 +1302,7 @@ var src_default = {
           ${results.results.map((row) => `
             <div class="video-item">
               <div class="video-thumbnail">
-                <img src="${row.thumbnail_url || "https://via.placeholder.com/365x200"}" alt="${row.title || "No Title"}">
+                <img src="${row.thumbnailUrl || "https://via.placeholder.com/365x200"}" alt="${row.title || "No Title"}">
                 <div class="video-duration">5:30</div>
               </div>
               <div class="video-info">

@@ -9,6 +9,6 @@ enabled = true
 # 添加 D1 数据库配置
 [[d1_databases]]
 binding = "DB" # 这是您在代码中引用数据库时使用的变量名
-database_name = "yasyadong" # 将此替换为您在 Cloudflare 仪表板中创建的数据库名称
-database_id = "171bcdd9-ee81-4fb9-b967-054ff096d273" # 可选，如果有多个同名数据库，可指定数据库 ID
+database_name = "yasyadong1114" # 将此替换为您在 Cloudflare 仪表板中创建的数据库名称
+database_id = "8421e176-8517-4bde-808b-46dcf25e9798" # 可选，如果有多个同名数据库，可指定数据库 ID
 
