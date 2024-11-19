@@ -14,66 +14,8 @@ export default {
             // 生成 HTML 内容，包含查询结果
             let html = `<!DOCTYPE html>
       <html lang="ko">
-      <body>
-      
-        ${header}
-
-        <!-- 横向滚动的 Banner 区域 -->
-        <div class="banner-container">
-          <!-- Banner 项目（保持不变） -->
-          <div class="banner-item">
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi9zULC2Bg1ME1jFzHBi7gmVGVm2Ve6rGHRPWJ4zAPGs3oHJHX1G6MCbVZFqvuH5Q6hLcflzJoqD9gL0xJRSfJ3ZeY70Fk1IPm_cPKqgtIM8zDHBSBKDJyhmXgC5O2Fx0_r8qAcmhwVpsYVZl6is0w2s4Ze6XPtl2g4S0NPTO9omTZywEUoRtxlTW74JTrr" alt="Banner 1" style="width: 100%; height: auto;">
-          </div>
-          <div class="banner-item">
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh1iEMTiytqH0Qy_AkSVEIr0o7MmKrs8sj274MjiSXpVPZBUTpP2NHTEAm-3alvIcei0GuVv6qv0SoIqBjopOcrRZKtwx2e31aUI-uMKmqggiOucJkYFPkUyARMRyeZGT-XsgRzoum-zo1MgM-ryfZm29mIP8v5zxpplgDHAu_zHA_AO0JTtuxit2M_3gGQ" alt="Banner 2" style="width: 100%; height: auto;">
-          </div>
-          <div class="banner-item">
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhzdE6yUtQuf804pLW5v5_X9ibAEXRTHfER_VDMQt2h635hMF8hkdb6wK64AyHuotY5HmpEdOqAovvMyaf99yhkDHpqZZn_pPVigC6vwhQDRuxzOzYjdknpGn3pPplW1BZvXtOmu4Zv6fegocdP4uK7qdN2ZoyoT2wRZJTt4pJGi3-5hxlYqSDFxsih4W1V" alt="Banner 3" style="width: 100%; height: auto;">
-          </div>
-          <div class="banner-item">
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhg5WwBt_MN36seG5jAArLaJUv_Gm26n4CrEGHm2m8jLWwqS2eoakP2fI_7SrOaVlObhaLmyxBGkdMht7QDq_8XEZsLUaevVnozyE-iLtVxr921lRolOWxKOLELmoq3ma8quRnyQ8wTqMam3Byc1U061rQ7UTB9oQI3UFb1z_82Sj3Mmx7-TZtK-M0gExRy" alt="Banner 4" style="width: 100%; height: auto;">
-          </div>
-          <!-- 可以添加更多 Banner 项目 -->
-        </div>
-
-        <!-- Tab Navigation -->
-        <div class="tab-bar">
-          <div class="tab active">업데이트</div>
-          <div class="tab">배우별</div>
-          <div class="tab">취향별</div>
-          <div class="tab">인기100</div>
-        </div>
-
-        <!-- Category Filter -->
-        <div class="category-container">
-          <div class="category active">전체</div>
-          <div class="category">한국</div>
-          <div class="category">일본</div>
-          <div class="category">서양</div>
-          <div class="category">중화권</div>
-          <div class="category">동남아</div>
-        </div>
-
-        <!-- Video Content -->
-        <div class="video-container">
-          <!-- 显示查询数据 -->
-          ${results.results.map(row => `
-            <div class="video-item">
-              <div class="video-thumbnail">
-                <img src="${row.thumbnailUrl || 'https://via.placeholder.com/365x200'}" alt="${row.title || 'No Title'}">
-                <div class="video-duration">5:30</div>
-              </div>
-              <div class="video-info">
-                <div class="video-title">${row.title || 'NoData'}</div>
-                <div class="video-meta">观看次数 ${row.views || 1000} · 2024-11-01</div>
-                <p>${row.description}。</p>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </body>
-      
-       <style>
+      <head>
+        <style>
           /* CSS 代码（保持不变） */
           body {
             font-family: Arial, sans-serif;
@@ -212,6 +154,64 @@ export default {
   			  }
   			}
         </style>
+      </head>
+      <body>
+        ${header}
+
+        <!-- 横向滚动的 Banner 区域 -->
+        <div class="banner-container">
+          <!-- Banner 项目（保持不变） -->
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi9zULC2Bg1ME1jFzHBi7gmVGVm2Ve6rGHRPWJ4zAPGs3oHJHX1G6MCbVZFqvuH5Q6hLcflzJoqD9gL0xJRSfJ3ZeY70Fk1IPm_cPKqgtIM8zDHBSBKDJyhmXgC5O2Fx0_r8qAcmhwVpsYVZl6is0w2s4Ze6XPtl2g4S0NPTO9omTZywEUoRtxlTW74JTrr" alt="Banner 1" style="width: 100%; height: auto;">
+          </div>
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh1iEMTiytqH0Qy_AkSVEIr0o7MmKrs8sj274MjiSXpVPZBUTpP2NHTEAm-3alvIcei0GuVv6qv0SoIqBjopOcrRZKtwx2e31aUI-uMKmqggiOucJkYFPkUyARMRyeZGT-XsgRzoum-zo1MgM-ryfZm29mIP8v5zxpplgDHAu_zHA_AO0JTtuxit2M_3gGQ" alt="Banner 2" style="width: 100%; height: auto;">
+          </div>
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhzdE6yUtQuf804pLW5v5_X9ibAEXRTHfER_VDMQt2h635hMF8hkdb6wK64AyHuotY5HmpEdOqAovvMyaf99yhkDHpqZZn_pPVigC6vwhQDRuxzOzYjdknpGn3pPplW1BZvXtOmu4Zv6fegocdP4uK7qdN2ZoyoT2wRZJTt4pJGi3-5hxlYqSDFxsih4W1V" alt="Banner 3" style="width: 100%; height: auto;">
+          </div>
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhg5WwBt_MN36seG5jAArLaJUv_Gm26n4CrEGHm2m8jLWwqS2eoakP2fI_7SrOaVlObhaLmyxBGkdMht7QDq_8XEZsLUaevVnozyE-iLtVxr921lRolOWxKOLELmoq3ma8quRnyQ8wTqMam3Byc1U061rQ7UTB9oQI3UFb1z_82Sj3Mmx7-TZtK-M0gExRy" alt="Banner 4" style="width: 100%; height: auto;">
+          </div>
+          <!-- 可以添加更多 Banner 项目 -->
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-bar">
+          <div class="tab active">업데이트</div>
+          <div class="tab">배우별</div>
+          <div class="tab">취향별</div>
+          <div class="tab">인기100</div>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="category-container">
+          <div class="category active">전체</div>
+          <div class="category">한국</div>
+          <div class="category">일본</div>
+          <div class="category">서양</div>
+          <div class="category">중화권</div>
+          <div class="category">동남아</div>
+        </div>
+
+        <!-- Video Content -->
+        <div class="video-container">
+          <!-- 显示查询数据 -->
+          ${results.results.map(row => `
+            <div class="video-item">
+              <div class="video-thumbnail">
+                <img src="${row.thumbnailUrl || 'https://via.placeholder.com/365x200'}" alt="${row.title || 'No Title'}">
+                <div class="video-duration">5:30</div>
+              </div>
+              <div class="video-info">
+                <div class="video-title">${row.title || 'NoData'}</div>
+                <div class="video-meta">观看次数 ${row.views || 1000} · 2024-11-01</div>
+                <p>${row.description}。</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </body>
       </html>`;
 
             // 返回生成的 HTML 页面
