@@ -176,7 +176,16 @@ export default {
         <!-- 横向滚动的 Banner 区域 -->
         <div class="banner-container">
           <div class="banner-item">
-            <img src="https://www.example.com/banner1.jpg" alt="Banner 1">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi9zULC2Bg1ME1jFzHBi7gmVGVm2Ve6rGHRPWJ4zAPGs3oHJHX1G6MCbVZFqvuH5Q6hLcflzJoqD9gL0xJRSfJ3ZeY70Fk1IPm_cPKqgtIM8zDHBSBKDJyhmXgC5O2Fx0_r8qAcmhwVpsYVZl6is0w2s4Ze6XPtl2g4S0NPTO9omTZywEUoRtxlTW74JTrr" alt="Banner 1" style="width: 100%; height: auto;">
+          </div>
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh1iEMTiytqH0Qy_AkSVEIr0o7MmKrs8sj274MjiSXpVPZBUTpP2NHTEAm-3alvIcei0GuVv6qv0SoIqBjopOcrRZKtwx2e31aUI-uMKmqggiOucJkYFPkUyARMRyeZGT-XsgRzoum-zo1MgM-ryfZm29mIP8v5zxpplgDHAu_zHA_AO0JTtuxit2M_3gGQ" alt="Banner 2" style="width: 100%; height: auto;">
+          </div>
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhzdE6yUtQuf804pLW5v5_X9ibAEXRTHfER_VDMQt2h635hMF8hkdb6wK64AyHuotY5HmpEdOqAovvMyaf99yhkDHpqZZn_pPVigC6vwhQDRuxzOzYjdknpGn3pPplW1BZvXtOmu4Zv6fegocdP4uK7qdN2ZoyoT2wRZJTt4pJGi3-5hxlYqSDFxsih4W1V" alt="Banner 3" style="width: 100%; height: auto;">
+          </div>
+          <div class="banner-item">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhg5WwBt_MN36seG5jAArLaJUv_Gm26n4CrEGHm2m8jLWwqS2eoakP2fI_7SrOaVlObhaLmyxBGkdMht7QDq_8XEZsLUaevVnozyE-iLtVxr921lRolOWxKOLELmoq3ma8quRnyQ8wTqMam3Byc1U061rQ7UTB9oQI3UFb1z_82Sj3Mmx7-TZtK-M0gExRy" alt="Banner 4" style="width: 100%; height: auto;">
           </div>
           <!-- 更多 Banner 项目 -->
         </div>
