@@ -8,7 +8,7 @@ export default {
             const header = renderHeader();
 
             // 从 D1 数据库查询示例数据
-            const query = "SELECT * FROM data_videos LIMIT 10"; // 查询 data_user 表前10条数据
+            const query = "SELECT * FROM od_items LIMIT 10"; // 查询 data_user 表前10条数据
             const results = await env.DB.prepare(query).all(); // 使用 D1 Database API 执行查询
 
             // 生成 HTML 内容，包含查询结果
@@ -60,13 +60,11 @@ export default {
           ${results.results.map(row => `
             <div class="video-item">
               <div class="video-thumbnail">
-                <img src="${row.thumbnailUrl || 'https://via.placeholder.com/365x200'}" alt="${row.title || 'No Title'}">
+                <img src="${row.items_image || 'https://via.placeholder.com/365x200'}" alt="${row.items_name || 'No Title'}">
                 <div class="video-duration">5:30</div>
               </div>
               <div class="video-info">
-                <div class="video-title">${row.title || 'NoData'}</div>
-                <div class="video-meta">观看次数 ${row.views || 1000} · 2024-11-01</div>
-                <p>${row.description}。</p>
+                <div class="video-title">${row.items_name || 'NoData'}</div>
               </div>
             </div>
           `).join('')}
