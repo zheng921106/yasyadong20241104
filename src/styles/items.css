@@ -1,0 +1,38 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.video-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.video-player video {
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.video-details {
+    text-align: center;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.video-details h1 {
+    font-size: 24px;
+    color: #ff6b6b;
+}
+
+.video-details p {
+    font-size: 16px;
+    color: #ccc;
+}
