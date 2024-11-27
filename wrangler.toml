@@ -1,5 +1,5 @@
 name = "yas1104"
-main = "src/home.js"
+main = "src/index.js"
 compatibility_date = "2024-10-22"
 compatibility_flags = ["nodejs_compat"]
 
