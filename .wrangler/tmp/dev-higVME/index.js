@@ -995,6 +995,7 @@ function renderHeader(title2 = "\uC57C\uB3D9 \uCD5C\uC2E0 | \uC57C\uC2A4\uB2F7\u
       <link rel="shortcut icon" href="https://www.yasyadong.com/favicon.ico" />
       <meta name="renderer" content="webkit|ie-comp|ie-stand">
       <style lang="scss">
+      a { text-decoration: none;color:inherit }
         .global-header {
           display: flex;
           justify-content: space-between;

@@ -15,6 +15,7 @@ export function renderHeader(title = "야동 최신 | 야스닷컴 추천 사이
       <link rel="shortcut icon" href="https://www.yasyadong.com/favicon.ico" />
       <meta name="renderer" content="webkit|ie-comp|ie-stand">
       <style lang="scss">
+      a { text-decoration: none;color:inherit }
         .global-header {
           display: flex;
           justify-content: space-between;
