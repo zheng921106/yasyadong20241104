@@ -1,5 +1,5 @@
 name = "yas1104"
-main = "src/home.js"
+main = "src/index.js"
 compatibility_date = "2024-10-22"
 compatibility_flags = ["nodejs_compat"]
 
@@ -18,7 +18,6 @@ node_compat = true        # 启用 Node.js 兼容模式（必要时）
 
 [[route]]
 pattern = "yasyadong1.com/*" # 替换为你的域名
-script = "yas1104"          # 匹配的 Workers 脚本名称
 
 [vars]
 NODE_ENV = "production" # 可选变量，表示当前运行环境
