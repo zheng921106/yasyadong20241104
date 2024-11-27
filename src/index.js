@@ -15,7 +15,7 @@ export default {
             let html = `<!DOCTYPE html>
       <html lang="ko">
       <body>
-      
+       
         ${header}
 
         <!-- 横向滚动的 Banner 区域 -->
