@@ -1219,7 +1219,7 @@ var home_default = {
                 <div class="video-container">
                     ${results.results.map((row) => `
                         <div class="video-item">
-                            <a href="/home/items?items_id=${row.items_id}">
+                            <a href="/items?items_id=${row.items_id}">
                                 <div class="video-thumbnail">
                                     <img src="https://www.yasyadong.com/data/upload/store/items/1/${row.items_image || "https://via.placeholder.com/365x200"}" alt="${row.items_name || "No Title"}">
                                     <div class="video-duration">${row.goods_custom}</div>
@@ -1273,6 +1273,7 @@ var items_default = {
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>${escapeHtml(result.items_name)}</title>
+                <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"><\/script>
                 <style>
                     body {
                         font-family: Arial, sans-serif;
@@ -1301,15 +1302,31 @@ var items_default = {
             <body>
                 ${header}
                 <div class="video-player">
-                    <video controls autoplay style="width: 100%; height: auto;">
-                        <source src="${videoUrl}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <video id="video-player" controls autoplay style="width: 100%; height: auto;"></video>
                 </div>
                 <div class="video-details">
                     <h1>${escapeHtml(result.items_name)}</h1>
                     <p>${description}</p>
                 </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const video = document.getElementById('video-player');
+                        const videoUrl = "${videoUrl}";
+
+                        if (Hls.isSupported()) {
+                            const hls = new Hls();
+                            hls.loadSource(videoUrl);
+                            hls.attachMedia(video);
+                            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                                console.log('HLS manifest loaded');
+                            });
+                        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                            video.src = videoUrl;
+                        } else {
+                            console.error('Your browser does not support HLS playback');
+                        }
+                    });
+                <\/script>
             </body>
             </html>`;
       return new Response(html, {

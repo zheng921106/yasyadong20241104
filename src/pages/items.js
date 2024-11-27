@@ -25,7 +25,7 @@ export default {
 
             // 构建安全的HTML
             const header = renderHeader(escapeHtml(result.items_name));
-            const videoUrl = escapeHtml(result.items_serial || '');
+            const videoUrl = escapeHtml(result.items_serial || ''); // 视频 URL
             const description = escapeHtml(result.goods_custom || 'No description available');
 
             const html = `
@@ -35,6 +35,7 @@ export default {
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>${escapeHtml(result.items_name)}</title>
+                <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
                 <style>
                     body {
                         font-family: Arial, sans-serif;
@@ -63,15 +64,31 @@ export default {
             <body>
                 ${header}
                 <div class="video-player">
-                    <video controls autoplay style="width: 100%; height: auto;">
-                        <source src="${videoUrl}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <video id="video-player" controls autoplay style="width: 100%; height: auto;"></video>
                 </div>
                 <div class="video-details">
                     <h1>${escapeHtml(result.items_name)}</h1>
                     <p>${description}</p>
                 </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const video = document.getElementById('video-player');
+                        const videoUrl = "${videoUrl}";
+
+                        if (Hls.isSupported()) {
+                            const hls = new Hls();
+                            hls.loadSource(videoUrl);
+                            hls.attachMedia(video);
+                            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                                console.log('HLS manifest loaded');
+                            });
+                        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                            video.src = videoUrl;
+                        } else {
+                            console.error('Your browser does not support HLS playback');
+                        }
+                    });
+                </script>
             </body>
             </html>`;
 
