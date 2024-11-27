@@ -1045,7 +1045,7 @@ function renderHeader() {
 }
 __name(renderHeader, "renderHeader");
 
-// src/index.js
+// src/home.js
 var src_default = {
   async fetch(request, env3, ctx) {
     try {
@@ -1271,4 +1271,4 @@ export {
   __INTERNAL_WRANGLER_MIDDLEWARE__,
   middleware_loader_entry_default as default
 };
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=home.js.map

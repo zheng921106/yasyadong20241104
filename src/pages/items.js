@@ -1,4 +1,4 @@
-import { renderHeader } from './components/header/header.js';
+import { renderHeader } from '../components/header/header.js';
 
 export default {
     async fetch(request, env, ctx) {
