@@ -1332,7 +1332,7 @@ __name(escapeHtml, "escapeHtml");
 var src_default = {
   async fetch(request, env3, ctx) {
     const url = new URL(request.url);
-    if (url.pathname === "/") {
+    if (url.pathname === "/" || url.pathname === "/index") {
       return home_default.fetch(request, env3, ctx);
     } else if (url.pathname === "/items") {
       return items_default.fetch(request, env3, ctx);
