@@ -10,21 +10,30 @@ export default {
                 return new Response('Invalid Request: Missing items_id parameter', { status: 400 });
             }
 
-            // 准备查询语句
+// 准备查询语句
             const query = `SELECT * FROM od_items WHERE items_id = ?`;
             const stmt = env.DB.prepare(query);
 
-            // 执行查询
+// 执行查询
             const result = await stmt.bind(items_id).first();
 
-            // 检查查询结果
+// 检查查询结果
             if (!result) {
                 return new Response('Item not found', { status: 404 });
             }
 
-            // 构建安全的HTML
-            const header = renderHeader(escapeHtml(result.items_name),true);
-            const videoUrl = escapeHtml(result.items_serial || ''); // 视频 URL
+// 检测终端是否为手机端
+            const userAgent = request.headers.get('user-agent') || '';
+            const isMobile = /mobile|android|iphone|ipad|phone/i.test(userAgent);
+
+// 修改 `items_serial` 的后缀
+            let videoUrl = escapeHtml(result.items_serial || '');
+            if (isMobile && videoUrl.endsWith('.shtml')) {
+                videoUrl = videoUrl.replace(/\.shtml$/, '.m3u8');
+            }
+
+// 构建安全的 HTML
+            const header = renderHeader(escapeHtml(result.items_name), true);
             const description = escapeHtml(result.goods_custom || 'No description available');
 
             const html = `<!DOCTYPE html>
