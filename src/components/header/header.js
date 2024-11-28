@@ -16,7 +16,7 @@ export function renderHeader(title = "야동 최신 | 야스닷컴 추천 사이
     <head>
         <meta charset="UTF-8">
         <title>${title}</title>
-        <link rel="stylesheet" href="/common/global-header.css">
+        <link rel="stylesheet" href="global-header.css">
     </head>
     <body>
         <div class="global-header">
