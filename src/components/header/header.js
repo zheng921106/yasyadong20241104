@@ -16,9 +16,9 @@ export function renderHeader(title = "야동 최신 | 야스닷컴 추천 사이
     <head>
         <meta charset="UTF-8">
         <title>${title}</title>
-        <link rel="stylesheet" href="/css/global-header.css"> <!-- 正确路径 -->
-            <link rel="stylesheet" href="/css/home.css"> <!-- 正确路径 -->
-        <link rel="stylesheet" href="/css/items.css"> <!-- 正确路径 -->
+        <link rel="stylesheet" href="https://imgyas.com/public/css/global-header.css"> <!-- 正确路径 -->
+            <link rel="stylesheet" href="https://imgyas.com/public/css/home.css"> <!-- 正确路径 -->
+        <link rel="stylesheet" href="https://imgyas.com/public/css/items.css"> <!-- 正确路径 -->
     </head>
     <body>
         <div class="global-header">
