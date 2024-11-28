@@ -1047,8 +1047,7 @@ var home_default = {
             `;
       let html = `<!DOCTYPE html>
                 ${header}
-                 <style>
-                        /* \u6DFB\u52A0\u7279\u6548\u6837\u5F0F */
+                   <style>
                         body {
                             font-family: Arial, sans-serif;
                             margin: 0;
@@ -1057,9 +1056,10 @@ var home_default = {
                             color: #fff;
                             overflow-x: hidden;
                         }
-                        a{
-                        text-decoration: none;
-                        color: initial;
+
+                        a {
+                            text-decoration: none;
+                            color: inherit;
                         }
 
                         .video-container {
@@ -1081,11 +1081,12 @@ var home_default = {
 
                         .video-item:hover {
                             transform: scale(1.03);
-                            /*box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);*/
                         }
-                        .video-thumbnail{
-                        color: #fff;
+
+                        .video-thumbnail {
+                            color: #fff;
                         }
+
                         .video-thumbnail img {
                             width: 100%;
                             height: auto;
@@ -1100,6 +1101,7 @@ var home_default = {
 
                         .pagination {
                             display: flex;
+                            flex-wrap: wrap;
                             justify-content: center;
                             margin: 20px 0;
                         }
@@ -1130,6 +1132,39 @@ var home_default = {
                             to {
                                 opacity: 1;
                                 transform: scale(1);
+                            }
+                        }
+
+                        /* \u54CD\u5E94\u5F0F\u8BBE\u8BA1 */
+                        @media (max-width: 768px) {
+                            .video-item {
+                                width: calc(100% - 40px); /* \u5728\u5C0F\u5C4F\u8BBE\u5907\u4E0A\u5355\u5217\u663E\u793A */
+                                max-width: 500px;
+                            }
+
+                            .pagination a {
+                                padding: 8px 10px;
+                                font-size: 14px;
+                            }
+
+                            .video-info {
+                                font-size: 14px;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .video-item {
+                                width: calc(100% - 20px); /* \u66F4\u5C0F\u5C4F\u5E55\u9002\u914D */
+                            }
+
+                            .pagination a {
+                                padding: 5px 8px;
+                                font-size: 12px;
+                                margin: 3px;
+                            }
+
+                            .video-info {
+                                font-size: 12px;
                             }
                         }
                     </style>

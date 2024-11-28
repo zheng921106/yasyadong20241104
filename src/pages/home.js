@@ -36,8 +36,7 @@ export default {
             `;
             let html = `<!DOCTYPE html>
                 ${header}
-                 <style>
-                        /* 添加特效样式 */
+                   <style>
                         body {
                             font-family: Arial, sans-serif;
                             margin: 0;
@@ -46,9 +45,10 @@ export default {
                             color: #fff;
                             overflow-x: hidden;
                         }
-                        a{
-                        text-decoration: none;
-                        color: initial;
+
+                        a {
+                            text-decoration: none;
+                            color: inherit;
                         }
 
                         .video-container {
@@ -70,11 +70,12 @@ export default {
 
                         .video-item:hover {
                             transform: scale(1.03);
-                            /*box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);*/
                         }
-                        .video-thumbnail{
-                        color: #fff;
+
+                        .video-thumbnail {
+                            color: #fff;
                         }
+
                         .video-thumbnail img {
                             width: 100%;
                             height: auto;
@@ -89,6 +90,7 @@ export default {
 
                         .pagination {
                             display: flex;
+                            flex-wrap: wrap;
                             justify-content: center;
                             margin: 20px 0;
                         }
@@ -119,6 +121,39 @@ export default {
                             to {
                                 opacity: 1;
                                 transform: scale(1);
+                            }
+                        }
+
+                        /* 响应式设计 */
+                        @media (max-width: 768px) {
+                            .video-item {
+                                width: calc(100% - 40px); /* 在小屏设备上单列显示 */
+                                max-width: 500px;
+                            }
+
+                            .pagination a {
+                                padding: 8px 10px;
+                                font-size: 14px;
+                            }
+
+                            .video-info {
+                                font-size: 14px;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .video-item {
+                                width: calc(100% - 20px); /* 更小屏幕适配 */
+                            }
+
+                            .pagination a {
+                                padding: 5px 8px;
+                                font-size: 12px;
+                                margin: 3px;
+                            }
+
+                            .video-info {
+                                font-size: 12px;
                             }
                         }
                     </style>
