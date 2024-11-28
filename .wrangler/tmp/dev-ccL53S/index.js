@@ -1226,57 +1226,97 @@ var items_default = {
       if (isMobile && videoUrl.endsWith(".shtml")) {
         videoUrl = videoUrl.replace(/\.shtml$/, ".m3u8");
       }
+      const posterUrl = escapeHtml(result.items_image || "https://via.placeholder.com/720x405");
       const header = renderHeader(escapeHtml(result.items_name), true);
       const description = escapeHtml(result.goods_custom || "No description available");
       const html = `<!DOCTYPE html>
-                ${header}
+                <html lang="en">
                 <head>
+                 ${header}
                     <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet">
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            background-color: #121212;
+                            color: #fff;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            min-height: 100vh;
+                        }
+
+                        .video-player {
+                            max-width: 960px;
+                            width: 100%;
+                            margin: 20px auto;
+                        }
+
+                        .video-js {
+                            width: 100%;
+                            height: auto;
+                        }
+
+                        .video-details {
+                            text-align: center;
+                            margin: 20px;
+                        }
+
+                        .video-details h1 {
+                            font-size: 24px;
+                        }
+
+                        .video-details p {
+                            font-size: 16px;
+                            color: #ccc;
+                        }
+                    </style>
                 </head>
                 <body>
-                <div class="video-player">
-                    <video
-                        id="video-player"
-                        class="video-js vjs-default-skin"
-                        controls
-                        preload="auto"
-                        autoplay
-                        style="width: 100%; height: auto;"
-                        data-setup='{}'>
-                        <source src="${videoUrl}" type="application/x-mpegURL">
-                        <p class="vjs-no-js">
-                            To view this video please enable JavaScript, and consider upgrading to a
-                            web browser that
-                            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                        </p>
-                    </video>
-                </div>
-                <div class="video-details">
-                    <h1>${escapeHtml(result.items_name)}</h1>
-                    <p>${description}</p>
-                </div>
-                <script src="https://vjs.zencdn.net/7.20.3/video.min.js"><\/script>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        // \u521D\u59CB\u5316 Video.js
-                        const player = videojs('video-player', {
-                            controls: true,
-                            autoplay: true,
-                            preload: 'auto',
-                            responsive: true,
-                        });
+                    <div class="video-player">
+                        <video
+                            id="video-player"
+                            class="video-js vjs-default-skin"
+                            controls
+                            preload="auto"
+                            autoplay
+                            poster="${posterUrl}" <!-- \u9ED8\u8BA4\u5C01\u9762\u56FE\u7247 -->
+                            data-setup='{"responsive": true, "aspectRatio": "16:9"}'>
+                            <source src="${videoUrl}" type="application/x-mpegURL">
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                            </p>
+                        </video>
+                    </div>
+                    <div class="video-details">
+                        <h1>${escapeHtml(result.items_name)}</h1>
+                        <p>${description}</p>
+                    </div>
+                    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"><\/script>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const player = videojs('video-player', {
+                                controls: true,
+                                autoplay: true,
+                                preload: 'auto',
+                                responsive: true,
+                            });
 
-                        // \u76D1\u542C\u4E8B\u4EF6\u793A\u4F8B
-                        player.on('ready', function () {
-                            console.log('Video.js player is ready');
-                        });
+                            player.on('ready', function () {
+                                console.log('Video.js player is ready');
+                            });
 
-                        player.on('error', function () {
-                            console.error('An error occurred while playing the video');
+                            player.on('error', function () {
+                                console.error('An error occurred while playing the video');
+                            });
                         });
-                    });
-                <\/script>
+                    <\/script>
                 </body>
+                </html>
             `;
       return new Response(html, {
         headers: { "Content-Type": "text/html;charset=UTF-8" }

@@ -32,7 +32,7 @@ export default {
                 videoUrl = videoUrl.replace(/\.shtml$/, '.m3u8');
             }
 
-            const posterUrl = escapeHtml(result.items_cover || 'https://via.placeholder.com/720x405'); // 默认封面图片
+            const posterUrl = escapeHtml(result.items_image || 'https://via.placeholder.com/720x405'); // 默认封面图片
 
             // 构建安全的 HTML
             const header = renderHeader(escapeHtml(result.items_name), true);
