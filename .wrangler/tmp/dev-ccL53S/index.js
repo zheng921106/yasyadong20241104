@@ -1044,6 +1044,90 @@ var home_default = {
             `;
       let html = `<!DOCTYPE html>
                 ${header}
+                 <style>
+                        /* \u6DFB\u52A0\u7279\u6548\u6837\u5F0F */
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            background: linear-gradient(to bottom, #1e1e1e, #121212);
+                            color: #fff;
+                            overflow-x: hidden;
+                        }
+                        a{
+                        text-decoration: none;
+                        color: initial;
+                        }
+
+                        .video-container {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 20px;
+                            justify-content: center;
+                            padding: 20px;
+                        }
+
+                        .video-item {
+                            width: 300px;
+                            background-color: #333;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            transform: scale(0.9);
+                            transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        }
+
+                        .video-item:hover {
+                            transform: scale(1.03);
+                            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+                        }
+
+                        .video-thumbnail img {
+                            width: 100%;
+                            height: auto;
+                            opacity: 0;
+                            animation: fadeIn 0.8s forwards;
+                        }
+
+                        .video-info {
+                            padding: 10px;
+                            text-align: center;
+                        }
+
+                        .pagination {
+                            display: flex;
+                            justify-content: center;
+                            margin: 20px 0;
+                        }
+
+                        .pagination a {
+                            padding: 10px 15px;
+                            margin: 0 5px;
+                            text-decoration: none;
+                            background-color: #444;
+                            color: #fff;
+                            border-radius: 5px;
+                        }
+
+                        .pagination a.active {
+                            background-color: #d32f2f;
+                            font-weight: bold;
+                        }
+
+                        .pagination a:hover {
+                            background-color: #555;
+                        }
+
+                        @keyframes fadeIn {
+                            from {
+                                opacity: 0;
+                                transform: scale(0.9);
+                            }
+                            to {
+                                opacity: 1;
+                                transform: scale(1);
+                            }
+                        }
+                    </style>
             <body>
                 <div class="video-container">
                     ${results.results.map((row) => `
@@ -1062,6 +1146,13 @@ var home_default = {
                 </div>
                   <!-- \u5206\u9875\u5BFC\u822A -->
                    ${pagination}
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            document.body.style.opacity = '0';
+                            document.body.style.transition = 'opacity 0.5s ease-in-out';
+                            setTimeout(() => document.body.style.opacity = '1', 50);
+                        });
+                    <\/script>
             </body>
            `;
       return new Response(html, {
