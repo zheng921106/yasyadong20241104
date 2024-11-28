@@ -993,6 +993,9 @@ function renderHeader(title2 = "\uC57C\uB3D9 \uCD5C\uC2E0 | \uC57C\uC2A4\uB2F7\u
     <head>
         <meta charset="UTF-8">
         <title>${title2}</title>
+        <meta name="keywords" content="\uC57C\uB3D9, \uCD5C\uC2E0\uC57C\uB3D9, \uD55C\uAD6D\uC57C\uB3D9, \uAD6D\uC0B0\uC57C\uB3D9, \uC77C\uBCF8\uC57C\uB3D9, \uC11C\uC591\uC57C\uB3D9, \uC131\uC778\uBC29\uC1A1, bj\uC57C\uB3D9, \uBAA8\uBC14\uC77C\uC57C\uB3D9, \uC57C\uC2A4\uB2F7\uCEF4, \uC131\uC778\uC57C\uB3D9, \uC57C\uB3D9\uC0AC\uC774\uD2B8, \uC778\uAE30\uC57C\uB3D9, \uBB34\uB8CC\uC57C\uB3D9, AV\uC601\uC0C1">
+        <meta name="description" content="\uC57C\uB3D9 \uC11C\uBE44\uC2A4\uC5D0 \uCD5C\uC804\uC120\uC5D0 \uC788\uB294 \uC57C\uC2A4\uB2F7\uCEF4\uC740 \uCD5C\uC2E0 \uC57C\uB3D9\uC744 \uB9E4\uC77C \uC5C5\uB370\uC774\uD2B8\uD558\uB294 \uC778\uAE30 \uC131\uC778 \uC0AC\uC774\uD2B8\uC785\uB2C8\uB2E4. \uBE60\uB978 \uC18D\uB3C4\uB85C \uB2E4\uC591\uD55C \uD55C\uAD6D, \uC77C\uBCF8, \uC11C\uC591 \uC57C\uB3D9\uC744 \uC2E4\uC2DC\uAC04\uC73C\uB85C \uBB34\uB8CC \uC2DC\uCCAD\uD558\uC138\uC694. \uCD5C\uACE0\uC758 \uC57C\uB3D9 \uCD94\uCC9C \uC0AC\uC774\uD2B8\uC5D0\uC11C \uC81C\uD55C \uC5C6\uC774 \uC990\uAE30\uC138\uC694.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://imgyas.com/public/css/global-header.css"> <!-- \u6B63\u786E\u8DEF\u5F84 -->
             <link rel="stylesheet" href="https://imgyas.com/public/css/home.css"> <!-- \u6B63\u786E\u8DEF\u5F84 -->
         <link rel="stylesheet" href="https://imgyas.com/public/css/items.css"> <!-- \u6B63\u786E\u8DEF\u5F84 -->
@@ -1000,7 +1003,7 @@ function renderHeader(title2 = "\uC57C\uB3D9 \uCD5C\uC2E0 | \uC57C\uC2A4\uB2F7\u
     <body>
         <div class="global-header">
             <div class="header-left">
-                <img src="https://www.yasyadong.com/data/upload/common/07242086604829132.png" alt="Logo" class="logo">
+              <a href="/">  <img src="https://www.yasyadong.com/data/upload/common/07242086604829132.png" alt="Logo" class="logo"></a>
             </div>
             <div class="header-center">
                 <input type="text" placeholder="Search..." class="search-bar">
