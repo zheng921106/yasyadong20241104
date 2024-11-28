@@ -1223,8 +1223,14 @@ var items_default = {
       const userAgent = request.headers.get("user-agent") || "";
       const isMobile = /mobile|android|iphone|ipad|phone/i.test(userAgent);
       let videoUrl = escapeHtml(result.items_serial || "");
-      if (isMobile && videoUrl.endsWith(".shtml")) {
-        videoUrl = videoUrl.replace(/\.shtml$/, ".m3u8");
+      if (isMobile) {
+        if (videoUrl.endsWith(".shtml")) {
+          videoUrl = videoUrl.replace(/\.shtml$/, ".m3u8");
+        }
+      } else {
+        if (!videoUrl.endsWith(".shtml")) {
+          throw new Error(`Invalid video URL for desktop: ${videoUrl}`);
+        }
       }
       const posterUrl = escapeHtml(
         result.items_image ? `https://www.yasyadong.com/data/upload/store/items/1/${result.items_image}` : "https://via.placeholder.com/720x405"
@@ -1234,7 +1240,7 @@ var items_default = {
       const html = `<!DOCTYPE html>
                 <html lang="en">
                 <head>
-                 ${header}
+                    ${header}
                     <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet">
                     <style>
                         .video-player {
@@ -1265,23 +1271,21 @@ var items_default = {
                 </head>
                 <body>
                     <div class="video-player">
-                       <video
-    id="video-player"
-    class="video-js vjs-default-skin"
-    controls
-    preload="auto"
-    autoplay
-    poster="${posterUrl}"
-    data-setup='{"responsive": true, "aspectRatio": "16:9"}'>
-    <source src="${videoUrl}" type="application/x-mpegURL">
-    <source src="${videoUrl.replace(/\.m3u8$/, ".mp4")}" type="video/mp4"> <!-- \u6DFB\u52A0 MP4 \u5907\u7528\u683C\u5F0F -->
-    <p class="vjs-no-js">
-        To view this video please enable JavaScript, and consider upgrading to a
-        web browser that
-        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-</video>
-
+                        <video
+                            id="video-player"
+                            class="video-js vjs-default-skin"
+                            controls
+                            preload="auto"
+                            autoplay
+                            poster="${posterUrl}"
+                            data-setup='{"responsive": true, "aspectRatio": "16:9"}'>
+                            <source src="${videoUrl}" type="${isMobile ? "application/x-mpegURL" : "text/html"}">
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                            </p>
+                        </video>
                     </div>
                     <div class="video-details">
                         <h1>${escapeHtml(result.items_name)}</h1>
