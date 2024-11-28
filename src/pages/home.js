@@ -3,15 +3,37 @@ import { renderHeader } from '../components/header/header.js';
 export default {
     async fetch(request, env, ctx) {
         try {
-            const header = renderHeader("Home Page", true); // 开启 Banner
+            const header = renderHeader("", true); // 开启 Banner
             const url = new URL(request.url);
             const page = parseInt(url.searchParams.get('page')) || 1;
             const pageSize = 10;
             const offset = (page - 1) * pageSize;
 
+            // 获取总记录数
+            const countQuery = `SELECT COUNT(*) as total FROM od_items`;
+            const totalResult = await env.DB.prepare(countQuery).first();
+            const totalItems = totalResult.total;
+            const totalPages = Math.ceil(totalItems / pageSize);
+
+            // 查询当前页数据
             const query = `SELECT * FROM od_items LIMIT ${pageSize} OFFSET ${offset}`;
             const results = await env.DB.prepare(query).all();
 
+            // 构建分页导航
+            const maxVisiblePages = 10; // 最多显示10页
+            const paginationStart = Math.max(1, page - Math.floor(maxVisiblePages / 2));
+            const paginationEnd = Math.min(totalPages, paginationStart + maxVisiblePages - 1);
+
+            const pagination = `
+                <div class="pagination">
+                    <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">이전</a>
+                    ${Array.from({ length: paginationEnd - paginationStart + 1 }, (_, i) => paginationStart + i)
+                .map(p => `
+                            <a href="?page=${p}" class="${p === page ? 'active' : ''}">${p}</a>
+                        `).join('')}
+                    <a href="?page=${page < totalPages ? page + 1 : totalPages}" class="next">다음</a>
+                </div>
+            `;
             let html = `<!DOCTYPE html>
                 ${header}
             <body>
@@ -30,6 +52,8 @@ export default {
                         </div>
                     `).join('')}
                 </div>
+                  <!-- 分页导航 -->
+                   ${pagination}
             </body>
            `;
             return new Response(html, {

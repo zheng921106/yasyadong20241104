@@ -23,7 +23,7 @@ export default {
             }
 
             // 构建安全的HTML
-            const header = renderHeader(escapeHtml(result.items_name));
+            const header = renderHeader(escapeHtml(result.items_name),true);
             const videoUrl = escapeHtml(result.items_serial || ''); // 视频 URL
             const description = escapeHtml(result.goods_custom || 'No description available');
 
