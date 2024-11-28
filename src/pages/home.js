@@ -14,6 +14,9 @@ export default {
 
             let html = `<!DOCTYPE html>
                 ${header}
+                <head>
+                 <link rel="stylesheet" href="home.css">
+             </head>
             <body>
                 <div class="video-container">
                     ${results.results.map(row => `

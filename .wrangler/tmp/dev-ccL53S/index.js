@@ -993,7 +993,7 @@ function renderHeader(title2 = "\uC57C\uB3D9 \uCD5C\uC2E0 | \uC57C\uC2A4\uB2F7\u
     <head>
         <meta charset="UTF-8">
         <title>${title2}</title>
-        <link rel="stylesheet" href="/common/global-header.css">
+        <link rel="stylesheet" href="global-header.css">
     </head>
     <body>
         <div class="global-header">
@@ -1026,6 +1026,9 @@ var home_default = {
       const results = await env3.DB.prepare(query).all();
       let html = `<!DOCTYPE html>
                 ${header}
+                <head>
+                 <link rel="stylesheet" href="home.css">
+             </head>
             <body>
                 <div class="video-container">
                     ${results.results.map((row) => `
@@ -1064,6 +1067,9 @@ var items_default = {
       const header = renderHeader(result.items_name, false);
       const html = `<!DOCTYPE html>
                 ${header}
+                 <head>
+                 <link rel="stylesheet" href="items.css">
+             </head>
             <body>
                 <div class="video-details">
                     <h1>${result.items_name}</h1>
