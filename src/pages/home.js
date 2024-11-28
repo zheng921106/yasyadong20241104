@@ -18,8 +18,14 @@ export default {
                 <div class="video-container">
                     ${results.results.map(row => `
                         <div class="video-item">
-                            <a href="/items?items_id=${row.items_id}">
-                                <img src="https://www.yasyadong.com/data/upload/store/items/1/${row.items_image || 'https://via.placeholder.com/365x200'}" alt="${row.items_name || 'No Title'}">
+                            <a href="/home/items?items_id=${row.items_id}">
+                                <div class="video-thumbnail">
+                                    <img src="https://www.yasyadong.com/data/upload/store/items/1/${row.items_image || 'https://via.placeholder.com/365x200'}" alt="${row.items_name || 'No Title'}">
+                                    <div class="video-duration">${row.goods_custom}</div>
+                                </div>
+                                <div class="video-info">
+                                    <div class="video-title">${row.items_name || 'NoData'}</div>
+                                </div>
                             </a>
                         </div>
                     `).join('')}
