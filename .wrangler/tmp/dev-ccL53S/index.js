@@ -1086,6 +1086,9 @@ var items_default = {
 var src_default = {
   async fetch(request, env3, ctx) {
     const url = new URL(request.url);
+    if (url.pathname.startsWith("/css/") || url.pathname.startsWith("/images/")) {
+      return this.serveStaticFile(url.pathname);
+    }
     if (url.pathname === "/" || url.pathname === "/index") {
       return home_default.fetch(request, env3, ctx);
     } else if (url.pathname === "/items") {
@@ -1093,6 +1096,32 @@ var src_default = {
     } else {
       return new Response("Page not found", { status: 404 });
     }
+  },
+  // 静态文件服务
+  async serveStaticFile(pathname) {
+    try {
+      const filePath = `./public${pathname}`;
+      const fileType = this.getContentType(pathname);
+      const fileContent = await Deno.readFile(filePath);
+      return new Response(fileContent, {
+        headers: { "Content-Type": fileType }
+      });
+    } catch (error3) {
+      console.error("Static file error:", error3, "Path:", pathname);
+      return new Response("Static file not found", { status: 404 });
+    }
+  },
+  // 根据文件扩展名返回 MIME 类型
+  getContentType(pathname) {
+    if (pathname.endsWith(".css"))
+      return "text/css";
+    if (pathname.endsWith(".js"))
+      return "application/javascript";
+    if (pathname.endsWith(".jpg") || pathname.endsWith(".jpeg"))
+      return "image/jpeg";
+    if (pathname.endsWith(".png"))
+      return "image/png";
+    return "application/octet-stream";
   }
 };
 
