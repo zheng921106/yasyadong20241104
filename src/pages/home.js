@@ -20,7 +20,7 @@ export default {
             const results = await env.DB.prepare(query).all();
 
             // 构建分页导航
-            const maxVisiblePages = 10; // 最多显示10页
+            const maxVisiblePages = 5; // 最多显示10页
             const paginationStart = Math.max(1, page - Math.floor(maxVisiblePages / 2));
             const paginationEnd = Math.min(totalPages, paginationStart + maxVisiblePages - 1);
 
