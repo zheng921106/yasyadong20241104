@@ -1271,6 +1271,7 @@ var items_default = {
                 </head>
                 <body>
                     <div class="video-player">
+                    ${videoUrl}
                         <video
                             id="video-player"
                             class="video-js vjs-default-skin"
@@ -1279,7 +1280,7 @@ var items_default = {
                             autoplay
                             poster="${posterUrl}"
                             data-setup='{"responsive": true, "aspectRatio": "16:9"}'>
-                            <source src="${videoUrl}" type="${isMobile ? "application/x-mpegURL" : "text/html"}">
+                            <source src="${videoUrl}" type="application/x-mpegURL">
                             <p class="vjs-no-js">
                                 To view this video please enable JavaScript, and consider upgrading to a
                                 web browser that
