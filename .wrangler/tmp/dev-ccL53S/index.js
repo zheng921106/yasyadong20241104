@@ -1032,8 +1032,14 @@ var home_default = {
                 <div class="video-container">
                     ${results.results.map((row) => `
                         <div class="video-item">
-                            <a href="/items?items_id=${row.items_id}">
-                                <img src="https://www.yasyadong.com/data/upload/store/items/1/${row.items_image || "https://via.placeholder.com/365x200"}" alt="${row.items_name || "No Title"}">
+                            <a href="/home/items?items_id=${row.items_id}">
+                                <div class="video-thumbnail">
+                                    <img src="https://www.yasyadong.com/data/upload/store/items/1/${row.items_image || "https://via.placeholder.com/365x200"}" alt="${row.items_name || "No Title"}">
+                                    <div class="video-duration">${row.goods_custom}</div>
+                                </div>
+                                <div class="video-info">
+                                    <div class="video-title">${row.items_name || "NoData"}</div>
+                                </div>
                             </a>
                         </div>
                     `).join("")}
@@ -1056,14 +1062,17 @@ var items_default = {
       const url = new URL(request.url);
       const items_id = url.searchParams.get("items_id");
       if (!items_id) {
-        return new Response("Invalid Request", { status: 400 });
+        return new Response("Invalid Request: Missing items_id parameter", { status: 400 });
       }
       const query = `SELECT * FROM od_items WHERE items_id = ?`;
-      const result = await env3.DB.prepare(query).bind(items_id).first();
+      const stmt = env3.DB.prepare(query);
+      const result = await stmt.bind(items_id).first();
       if (!result) {
         return new Response("Item not found", { status: 404 });
       }
-      const header = renderHeader(result.items_name, false);
+      const header = renderHeader(escapeHtml(result.items_name));
+      const videoUrl = escapeHtml(result.items_serial || "");
+      const description = escapeHtml(result.goods_custom || "No description available");
       const html = `<!DOCTYPE html>
                 ${header}
             <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"><\/script>
@@ -1072,7 +1081,7 @@ var items_default = {
                     <video id="video-player" controls autoplay style="width: 100%; height: 100%;"></video>
                 </div>
                 <div class="video-details">
-                    <h1>${result.items_name}</h1>
+                    <h1>${escapeHtml(result.items_name)}</h1>
                     <p>${result.goods_custom || "No description available"}</p>
                 </div>
                  <script>
@@ -1104,6 +1113,12 @@ var items_default = {
     }
   }
 };
+function escapeHtml(str) {
+  if (!str)
+    return "";
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+__name(escapeHtml, "escapeHtml");
 
 // src/index.js
 var src_default = {
