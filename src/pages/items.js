@@ -32,10 +32,6 @@ export default {
                 if (videoUrl.endsWith('.shtml')) {
                     videoUrl = videoUrl.replace(/\.shtml$/, '.m3u8'); // 手机端使用 m3u8
                 }
-            } else {
-                if (!videoUrl.endsWith('.shtml')) {
-                    throw new Error(`Invalid video URL for desktop: ${videoUrl}`);
-                }
             }
 
             // 设置封面图片 URL

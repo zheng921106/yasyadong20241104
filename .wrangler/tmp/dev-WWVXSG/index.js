@@ -1227,10 +1227,6 @@ var items_default = {
         if (videoUrl.endsWith(".shtml")) {
           videoUrl = videoUrl.replace(/\.shtml$/, ".m3u8");
         }
-      } else {
-        if (!videoUrl.endsWith(".shtml")) {
-          throw new Error(`Invalid video URL for desktop: ${videoUrl}`);
-        }
       }
       const posterUrl = escapeHtml(
         result.items_image ? `https://www.yasyadong.com/data/upload/store/items/1/${result.items_image}` : "https://via.placeholder.com/720x405"
@@ -1257,7 +1253,6 @@ var items_default = {
                         .video-details {
                             text-align: center;
                             margin: 20px;
-                            max-width:0;
                         }
 
                         .video-details h1 {
