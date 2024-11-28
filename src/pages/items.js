@@ -69,6 +69,7 @@ export default {
                         .video-details {
                             text-align: center;
                             margin: 20px;
+                            max-width:0;
                         }
 
                         .video-details h1 {

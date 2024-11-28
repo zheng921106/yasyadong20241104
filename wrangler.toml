@@ -16,6 +16,3 @@ database_id = "171bcdd9-ee81-4fb9-b967-054ff096d273" # 可选，唯一标识数�
 upload_format = "modules" # 确保 Workers 使用模块化格式
 node_compat = true        # 启用 Node.js 兼容模式（必要时）
 
-
-[vars]
-NODE_ENV = "production" # 可选变量，表示当前运行环境
