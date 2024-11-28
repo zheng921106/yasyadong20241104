@@ -14,7 +14,6 @@ export default {
 
             let html = `<!DOCTYPE html>
                 ${header}
-            
             <body>
                 <div class="video-container">
                     ${results.results.map(row => `
