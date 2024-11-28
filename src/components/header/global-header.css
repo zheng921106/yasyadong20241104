@@ -1,0 +1,117 @@
+/* global-header.css */
+.global-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+}
+
+.global-header .header-left {
+    display: flex;
+    align-items: center;
+}
+
+.global-header .header-left .logo {
+    height: 60px;
+    margin-right: 10px;
+}
+
+.global-header .header-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.global-header .header-center .search-bar {
+    padding: 5px;
+    border-radius: 15px 0 0 15px;
+    border: none;
+    outline: none;
+    width: 100%;
+    max-width: 200px;
+}
+
+.global-header .header-center .search-button {
+    padding: 5px 10px;
+    background-color: #333;
+    border: none;
+    border-radius: 0 15px 15px 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.global-header .header-center .search-button:hover {
+    background-color: #555;
+}
+
+.global-header .header-right {
+    margin-left: auto;
+}
+
+.global-header .header-right .login-link {
+    color: #4e88ff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.global-header .header-right .login-link:hover {
+    text-decoration: underline;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .global-header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .global-header .header-left,
+    .global-header .header-center,
+    .global-header .header-right {
+        width: 100%;
+        justify-content: center;
+        margin: 5px 0;
+    }
+
+    .global-header .header-center .search-bar {
+        width: 80%;
+        max-width: none;
+    }
+
+    .global-header .header-right .login-link {
+        font-size: 14px;
+    }
+}
+
+/* Banner 样式 */
+.banner-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background-color: #1a1a1a;
+}
+
+.banner-item {
+    flex: 1 0 calc(100% / 2 - 10px);
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 273.3px;
+    max-height: 84.8px;
+}
+
+.banner-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .banner-item {
+        flex: 1 0 calc(100% / 6 - 10px);
+    }
+}

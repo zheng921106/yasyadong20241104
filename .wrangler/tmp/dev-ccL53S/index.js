@@ -978,127 +978,37 @@ var cloudflare_default2 = _process;
 globalThis.process = cloudflare_default2;
 
 // src/components/header/header.js
-function renderHeader(title2 = "\uC57C\uB3D9 \uCD5C\uC2E0 | \uC57C\uC2A4\uB2F7\uCEF4 \uCD94\uCC9C \uC0AC\uC774\uD2B8 | \uC778\uAE30 \uC131\uC778\uC601\uC0C1") {
+function renderHeader(title2 = "\uC57C\uB3D9 \uCD5C\uC2E0 | \uC57C\uC2A4\uB2F7\uCEF4 \uCD94\uCC9C \uC0AC\uC774\uD2B8 | \uC778\uAE30 \uC131\uC778\uC601\uC0C1", showBanner = false) {
+  const bannerHtml = showBanner ? `<div class="banner-container">
+            <div class="banner-item">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi9zULC2Bg1ME1jFzHBi7gmVGVm2Ve6rGHRPWJ4zAPGs3oHJHX1G6MCbVZFqvuH5Q6hLcflzJoqD9gL0xJRSfJ3ZeY70Fk1IPm_cPKqgtIM8zDHBSBKDJyhmXgC5O2Fx0_r8qAcmhwVpsYVZl6is0w2s4Ze6XPtl2g4S0NPTO9omTZywEUoRtxlTW74JTrr" alt="Banner 1">
+            </div>
+            <div class="banner-item">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh1iEMTiytqH0Qy_AkSVEIr0o7MmKrs8sj274MjiSXpVPZBUTpP2NHTEAm-3alvIcei0GuVv6qv0SoIqBjopOcrRZKtwx2e31aUI-uMKmqggiOucJkYFPkUyARMRyeZGT-XsgRzoum-zo1MgM-ryfZm29mIP8v5zxpplgDHAu_zHA_AO0JTtuxit2M_3gGQ" alt="Banner 2">
+            </div>
+        </div>` : "";
   return `
     <!DOCTYPE html>
     <html lang="ko">
     <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>${title2}</title>
-      <meta name="keywords" content="\uC57C\uB3D9, \uCD5C\uC2E0\uC57C\uB3D9, \uD55C\uAD6D\uC57C\uB3D9, \uAD6D\uC0B0\uC57C\uB3D9, \uC77C\uBCF8\uC57C\uB3D9, \uC11C\uC591\uC57C\uB3D9, \uC131\uC778\uBC29\uC1A1, bj\uC57C\uB3D9, \uBAA8\uBC14\uC77C\uC57C\uB3D9, \uC57C\uC2A4\uB2F7\uCEF4, \uC131\uC778\uC57C\uB3D9, \uC57C\uB3D9\uC0AC\uC774\uD2B8, \uC778\uAE30\uC57C\uB3D9, \uBB34\uB8CC\uC57C\uB3D9, AV\uC601\uC0C1" />
-      <meta name="description" content="\uC57C\uB3D9 \uC11C\uBE44\uC2A4\uC5D0 \uCD5C\uC804\uC120\uC5D0 \uC788\uB294 \uC57C\uC2A4\uB2F7\uCEF4\uC740 \uCD5C\uC2E0 \uC57C\uB3D9\uC744 \uB9E4\uC77C \uC5C5\uB370\uC774\uD2B8\uD558\uB294 \uC778\uAE30 \uC131\uC778 \uC0AC\uC774\uD2B8\uC785\uB2C8\uB2E4. \uBE60\uB978 \uC18D\uB3C4\uB85C \uB2E4\uC591\uD55C \uD55C\uAD6D, \uC77C\uBCF8, \uC11C\uC591 \uC57C\uB3D9\uC744 \uC2E4\uC2DC\uAC04\uC73C\uB85C \uBB34\uB8CC \uC2DC\uCCAD\uD558\uC138\uC694. \uCD5C\uACE0\uC758 \uC57C\uB3D9 \uCD94\uCC9C \uC0AC\uC774\uD2B8\uC5D0\uC11C \uC81C\uD55C \uC5C6\uC774 \uC990\uAE30\uC138\uC694." />
-      <meta name="referrer" content="no-referrer" />
-      <meta name="google-site-verification" content="Rqq8YUdS-Bzs8EtOsKteEOxUdBjOmDGpXkmfG3JCgCg" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="format-detection" content="telephone=no">
-      <link rel="shortcut icon" href="https://www.yasyadong.com/favicon.ico" />
-      <meta name="renderer" content="webkit|ie-comp|ie-stand">
-      <style lang="scss">
-      a { text-decoration: none;color:inherit }
-        .global-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 20px;
-          background-color: #000;
-          color: #fff;
-
-          .header-left {
-            display: flex;
-            align-items: center;
-
-            .logo {
-              height: 60px;
-              margin-right: 10px;
-            }
-          }
-
-          .header-center {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .search-bar {
-              padding: 5px;
-              border-radius: 15px 0 0 15px;
-              border: none;
-              outline: none;
-              width: 100%;
-              max-width: 200px;
-            }
-
-            .search-button {
-              padding: 5px 10px;
-              background-color: #333;
-              border: none;
-              border-radius: 0 15px 15px 0;
-              color: #fff;
-              cursor: pointer;
-
-              &:hover {
-                background-color: #555;
-              }
-            }
-          }
-
-          .header-right {
-            margin-left: auto;
-
-            .login-link {
-              color: #4e88ff;
-              text-decoration: none;
-              font-size: 16px;
-
-              &:hover {
-                text-decoration: underline;
-              }
-            }
-          }
-
-          /* \u54CD\u5E94\u5F0F\u8C03\u6574 */
-          @media (max-width: 768px) {
-            flex-direction: column;
-            padding: 10px;
-
-            .header-left,
-            .header-center,
-            .header-right {
-              width: 100%;
-              justify-content: center;
-              margin: 5px 0;
-            }
-
-            .header-center {
-              .search-bar {
-                width: 80%;
-                max-width: none;
-              }
-            }
-
-            .header-right {
-              .login-link {
-                font-size: 14px;
-              }
-            }
-          }
-        }
-      </style>
+        <meta charset="UTF-8">
+        <title>${title2}</title>
+        <link rel="stylesheet" href="/common/global-header.css">
     </head>
     <body>
-      <div class="global-header">
-        <div class="header-left">
-          <img src="https://www.yasyadong.com/data/upload/common/07242086604829132.png" alt="Logo" class="logo">
+        <div class="global-header">
+            <div class="header-left">
+                <img src="https://www.yasyadong.com/data/upload/common/07242086604829132.png" alt="Logo" class="logo">
+            </div>
+            <div class="header-center">
+                <input type="text" placeholder="Search..." class="search-bar">
+                <button class="search-button">&#x1F50D;</button>
+            </div>
+            <div class="header-right">
+                <a href="/login" class="login-link">\uB85C\uADF8\uC778 / \uD68C\uC6D0\uAC00\uC785</a>
+            </div>
         </div>
-        <div class="header-center">
-          <input type="text" placeholder="Search..." class="search-bar">
-          <button class="search-button">&#x1F50D;</button>
-        </div>
-        <div class="header-right">
-          <a href="/login" class="login-link">\uB85C\uADF8\uC778 / \uD68C\uC6D0\uAC00\uC785</a>
-        </div>
-      </div>
+        ${bannerHtml}
     `;
 }
 __name(renderHeader, "renderHeader");
@@ -1107,7 +1017,7 @@ __name(renderHeader, "renderHeader");
 var home_default = {
   async fetch(request, env3, ctx) {
     try {
-      const header = renderHeader();
+      const header = renderHeader("Home Page", true);
       const url = new URL(request.url);
       const page = parseInt(url.searchParams.get("page")) || 1;
       const pageSize = 10;
@@ -1115,135 +1025,24 @@ var home_default = {
       const query = `SELECT * FROM od_items LIMIT ${pageSize} OFFSET ${offset}`;
       const results = await env3.DB.prepare(query).all();
       let html = `<!DOCTYPE html>
-            <html lang="ko">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>\uC57C\uB3D9 \uCD5C\uC2E0 | \uC57C\uC2A4\uB2F7\uCEF4 \uCD94\uCC9C \uC0AC\uC774\uD2B8 | \uC778\uAE30 \uC131\uC778\uC601\uC0C1</title>
-                <style>
-                    /* \u4FDD\u7559\u539F\u6765\u7684 CSS \u6837\u5F0F */
-                    body {
-                        font-family: Arial, sans-serif;
-                        background-color: #121212;
-                        color: #fff;
-                        margin: 0;
-                        padding: 0;
-                    }
-                    .global-header {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        padding: 10px 20px;
-                        background-color: #000;
-                        color: #fff;
-                    }
-                    .banner-container {
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 10px;
-                        padding: 10px;
-                        background-color: #1a1a1a;
-                    }
-                    .banner-item {
-                        flex: 1 0 calc(100% / 2 - 10px);
-                        background-color: #333;
-                        border-radius: 5px;
-                        overflow: hidden;
-                        max-width: 273.3px;
-                        max-height: 84.8px;
-                    }
-                    .banner-item img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                    @media (min-width: 768px) {
-                        .banner-item {
-                            flex: 1 0 calc(100% / 6 - 10px);
-                        }
-                    }
-                    .video-container {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: center;
-                        padding: 20px;
-                        gap: 15px;
-                        background-color: #121212;
-                    }
-                    .video-item {
-                        width: 300px;
-                        background-color: #333;
-                        border-radius: 8px;
-                        overflow: hidden;
-                    }
-                    .video-thumbnail img {
-                        width: 100%;
-                        height: auto;
-                    }
-                    .video-info {
-                        padding: 10px;
-                        text-align: center;
-                    }
-                    .pagination {
-                        display: flex;
-                        justify-content: center;
-                        margin: 20px 0;
-                    }
-                    .pagination a {
-                        padding: 10px 15px;
-                        margin: 0 5px;
-                        text-decoration: none;
-                        background-color: #444;
-                        color: #fff;
-                        border-radius: 5px;
-                    }
-                    .pagination a:hover {
-                        background-color: #d32f2f;
-                    }
-                </style>
-            </head>
+                ${header}
             <body>
-                ${header} <!-- \u63D2\u5165\u5934\u90E8 -->
-
-                <!-- \u6A2A\u5411\u6EDA\u52A8\u7684 Banner \u533A\u57DF -->
-                <div class="banner-container">
-                    <div class="banner-item">
-                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi9zULC2Bg1ME1jFzHBi7gmVGVm2Ve6rGHRPWJ4zAPGs3oHJHX1G6MCbVZFqvuH5Q6hLcflzJoqD9gL0xJRSfJ3ZeY70Fk1IPm_cPKqgtIM8zDHBSBKDJyhmXgC5O2Fx0_r8qAcmhwVpsYVZl6is0w2s4Ze6XPtl2g4S0NPTO9omTZywEUoRtxlTW74JTrr" alt="Banner 1">
-                    </div>
-                    <div class="banner-item">
-                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh1iEMTiytqH0Qy_AkSVEIr0o7MmKrs8sj274MjiSXpVPZBUTpP2NHTEAm-3alvIcei0GuVv6qv0SoIqBjopOcrRZKtwx2e31aUI-uMKmqggiOucJkYFPkUyARMRyeZGT-XsgRzoum-zo1MgM-ryfZm29mIP8v5zxpplgDHAu_zHA_AO0JTtuxit2M_3gGQ" alt="Banner 2">
-                    </div>
-                </div>
-
-                <!-- Video Content -->
                 <div class="video-container">
                     ${results.results.map((row) => `
                         <div class="video-item">
                             <a href="/items?items_id=${row.items_id}">
-                                <div class="video-thumbnail">
-                                    <img src="https://www.yasyadong.com/data/upload/store/items/1/${row.items_image || "https://via.placeholder.com/365x200"}" alt="${row.items_name || "No Title"}">
-                                    <div class="video-duration">${row.goods_custom}</div>
-                                </div>
-                                <div class="video-info">
-                                    <div class="video-title">${row.items_name || "NoData"}</div>
-                                </div>
+                                <img src="..." alt="${row.items_name}">
                             </a>
                         </div>
                     `).join("")}
                 </div>
-
-                <!-- \u5206\u9875\u5BFC\u822A -->
-                <div class="pagination">
-                    <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">\u4E0A\u4E00\u9875</a>
-                    <a href="?page=${page + 1}" class="next">\u4E0B\u4E00\u9875</a>
-                </div>
             </body>
-            </html>`;
+           `;
       return new Response(html, {
         headers: { "Content-Type": "text/html;charset=UTF-8" }
       });
     } catch (error3) {
-      return new Response(`\u9875\u9762\u52A0\u8F7D\u51FA\u9519: ${error3.message}`, { status: 500 });
+      return new Response(`Error: ${error3.message}`, { status: 500 });
     }
   }
 };
@@ -1255,95 +1054,31 @@ var items_default = {
       const url = new URL(request.url);
       const items_id = url.searchParams.get("items_id");
       if (!items_id) {
-        return new Response("Invalid Request: Missing items_id parameter", { status: 400 });
+        return new Response("Invalid Request", { status: 400 });
       }
       const query = `SELECT * FROM od_items WHERE items_id = ?`;
-      const stmt = env3.DB.prepare(query);
-      const result = await stmt.bind(items_id).first();
+      const result = await env3.DB.prepare(query).bind(items_id).first();
       if (!result) {
         return new Response("Item not found", { status: 404 });
       }
-      const header = renderHeader(escapeHtml(result.items_name));
-      const videoUrl = escapeHtml(result.items_serial || "");
-      const description = escapeHtml(result.goods_custom || "No description available");
-      const html = `
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>${escapeHtml(result.items_name)}</title>
-                <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"><\/script>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                        margin: 0;
-                        padding: 0;
-                        text-align: center;
-                    }
-                    .video-player {
-                        margin: 20px auto;
-                        max-width: 800px;
-                    }
-                    .video-details {
-                        margin: 20px auto;
-                        max-width: 800px;
-                        text-align: left;
-                    }
-                    h1 {
-                        font-size: 24px;
-                    }
-                    p {
-                        font-size: 16px;
-                        color: #555;
-                    }
-                </style>
-            </head>
-            <body>
+      const header = renderHeader(result.items_name, false);
+      const html = `<!DOCTYPE html>
                 ${header}
-                <div class="video-player">
-                    <video id="video-player" controls autoplay style="width: 100%; height: auto;"></video>
-                </div>
+            <body>
                 <div class="video-details">
-                    <h1>${escapeHtml(result.items_name)}</h1>
-                    <p>${description}</p>
+                    <h1>${result.items_name}</h1>
+                    <p>${result.goods_custom || "No description available"}</p>
                 </div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const video = document.getElementById('video-player');
-                        const videoUrl = "${videoUrl}";
-
-                        if (Hls.isSupported()) {
-                            const hls = new Hls();
-                            hls.loadSource(videoUrl);
-                            hls.attachMedia(video);
-                            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                                console.log('HLS manifest loaded');
-                            });
-                        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                            video.src = videoUrl;
-                        } else {
-                            console.error('Your browser does not support HLS playback');
-                        }
-                    });
-                <\/script>
             </body>
-            </html>`;
+           `;
       return new Response(html, {
         headers: { "Content-Type": "text/html;charset=UTF-8" }
       });
     } catch (error3) {
-      console.error("Error fetching item:", error3);
       return new Response(`Error: ${error3.message}`, { status: 500 });
     }
   }
 };
-function escapeHtml(str) {
-  if (!str)
-    return "";
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-}
-__name(escapeHtml, "escapeHtml");
 
 // src/index.js
 var src_default = {

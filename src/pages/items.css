@@ -1,0 +1,42 @@
+/* 页面主体样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* 视频播放器容器 */
+.video-player {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* 视频详情容器 */
+.video-details {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.video-details h1 {
+    font-size: 24px;
+    color: #fff;
+}
+
+.video-details p {
+    font-size: 16px;
+    color: #bbb;
+}
+
+/* 错误提示信息 */
+.error-message {
+    font-size: 18px;
+    color: #f44336;
+    margin-top: 20px;
+}
