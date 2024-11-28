@@ -48,19 +48,6 @@ export default {
                  ${header}
                     <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet">
                     <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                            margin: 0;
-                            padding: 0;
-                            background-color: #121212;
-                            color: #fff;
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: center;
-                            min-height: 100vh;
-                        }
-
                         .video-player {
                             max-width: 960px;
                             width: 100%;
