@@ -84,7 +84,6 @@ export default {
                 </head>
                 <body>
                     <div class="video-player">
-                    ${videoUrl}
                         <video
                             id="video-player"
                             class="video-js vjs-default-skin"
