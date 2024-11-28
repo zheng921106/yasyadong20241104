@@ -32,7 +32,11 @@ export default {
                 videoUrl = videoUrl.replace(/\.shtml$/, '.m3u8');
             }
 
-            const posterUrl = escapeHtml(result.items_image || 'https://via.placeholder.com/720x405'); // 默认封面图片
+            const posterUrl = escapeHtml(
+                result.items_image
+                    ? `https://www.yasyadong.com/data/upload/store/items/1/${result.items_image}`
+                    : 'https://via.placeholder.com/720x405'
+            );
 
             // 构建安全的 HTML
             const header = renderHeader(escapeHtml(result.items_name), true);
@@ -85,21 +89,23 @@ export default {
                 </head>
                 <body>
                     <div class="video-player">
-                        <video
-                            id="video-player"
-                            class="video-js vjs-default-skin"
-                            controls
-                            preload="auto"
-                            autoplay
-                            poster="${posterUrl}" <!-- 默认封面图片 -->
-                            data-setup='{"responsive": true, "aspectRatio": "16:9"}'>
-                            <source src="${videoUrl}" type="application/x-mpegURL">
-                            <p class="vjs-no-js">
-                                To view this video please enable JavaScript, and consider upgrading to a
-                                web browser that
-                                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                            </p>
-                        </video>
+                       <video
+    id="video-player"
+    class="video-js vjs-default-skin"
+    controls
+    preload="auto"
+    autoplay
+    poster="${posterUrl}"
+    data-setup='{"responsive": true, "aspectRatio": "16:9"}'>
+    <source src="${videoUrl}" type="application/x-mpegURL">
+    <source src="${videoUrl.replace(/\.m3u8$/, '.mp4')}" type="video/mp4"> <!-- 添加 MP4 备用格式 -->
+    <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a
+        web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+</video>
+
                     </div>
                     <div class="video-details">
                         <h1>${escapeHtml(result.items_name)}</h1>
