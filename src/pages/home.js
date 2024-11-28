@@ -70,9 +70,11 @@ export default {
 
                         .video-item:hover {
                             transform: scale(1.03);
-                            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+                            /*box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);*/
                         }
-
+                        .video-thumbnail{
+                        color: #fff;
+                        }
                         .video-thumbnail img {
                             width: 100%;
                             height: auto;
