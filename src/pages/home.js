@@ -20,20 +20,25 @@ export default {
             const results = await env.DB.prepare(query).all();
 
             // 构建分页导航
-            const maxVisiblePages = 5; // 最多显示10页
+            const maxVisiblePages = 5; // 最多显示5个页码
             const paginationStart = Math.max(1, page - Math.floor(maxVisiblePages / 2));
             const paginationEnd = Math.min(totalPages, paginationStart + maxVisiblePages - 1);
 
             const pagination = `
-                <div class="pagination">
-                    <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">이전</a>
-                    ${Array.from({ length: paginationEnd - paginationStart + 1 }, (_, i) => paginationStart + i)
+    <div class="pagination">
+        <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">이전</a>
+        ${Array.from({ length: paginationEnd - paginationStart + 1 }, (_, i) => paginationStart + i)
                 .map(p => `
-                            <a href="?page=${p}" class="${p === page ? 'active' : ''}">${p}</a>
-                        `).join('')}
-                    <a href="?page=${page < totalPages ? page + 1 : totalPages}" class="next">다음</a>
-                </div>
-            `;
+                <a href="?page=${p}" class="${p === page ? 'active' : ''}">${p}</a>
+            `).join('')}
+        ${paginationEnd < totalPages
+                ? `<span>...</span><a href="?page=${totalPages}" class="all-pages">${totalPages}</a>`
+                : ''
+            }
+        <a href="?page=${page < totalPages ? page + 1 : totalPages}" class="next">다음</a>
+    </div>
+`;
+
             let html = `<!DOCTYPE html>
                 ${header}
                    <style>

@@ -1033,18 +1033,19 @@ var home_default = {
       const totalPages = Math.ceil(totalItems / pageSize);
       const query = `SELECT * FROM od_items LIMIT ${pageSize} OFFSET ${offset}`;
       const results = await env3.DB.prepare(query).all();
-      const maxVisiblePages = 10;
+      const maxVisiblePages = 5;
       const paginationStart = Math.max(1, page - Math.floor(maxVisiblePages / 2));
       const paginationEnd = Math.min(totalPages, paginationStart + maxVisiblePages - 1);
       const pagination = `
-                <div class="pagination">
-                    <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">\uC774\uC804</a>
-                    ${Array.from({ length: paginationEnd - paginationStart + 1 }, (_, i) => paginationStart + i).map((p) => `
-                            <a href="?page=${p}" class="${p === page ? "active" : ""}">${p}</a>
-                        `).join("")}
-                    <a href="?page=${page < totalPages ? page + 1 : totalPages}" class="next">\uB2E4\uC74C</a>
-                </div>
-            `;
+    <div class="pagination">
+        <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">\uC774\uC804</a>
+        ${Array.from({ length: paginationEnd - paginationStart + 1 }, (_, i) => paginationStart + i).map((p) => `
+                <a href="?page=${p}" class="${p === page ? "active" : ""}">${p}</a>
+            `).join("")}
+        ${paginationEnd < totalPages ? `<span>...</span><a href="?page=${totalPages}" class="all-pages">${totalPages}</a>` : ""}
+        <a href="?page=${page < totalPages ? page + 1 : totalPages}" class="next">\uB2E4\uC74C</a>
+    </div>
+`;
       let html = `<!DOCTYPE html>
                 ${header}
                    <style>
