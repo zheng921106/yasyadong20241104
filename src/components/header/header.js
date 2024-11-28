@@ -23,7 +23,7 @@ export function renderHeader(title = "야동 최신 | 야스닷컴 추천 사이
     <body>
         <div class="global-header">
             <div class="header-left">
-                <img src="https://www.yasyadong.com/data/upload/common/07242086604829132.png" alt="Logo" class="logo">
+              <a href="/">  <img src="https://www.yasyadong.com/data/upload/common/07242086604829132.png" alt="Logo" class="logo"></a>
             </div>
             <div class="header-center">
                 <input type="text" placeholder="Search..." class="search-bar">
