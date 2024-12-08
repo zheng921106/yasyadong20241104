@@ -1227,6 +1227,9 @@ var items_default = {
         if (videoUrl.endsWith(".shtml")) {
           videoUrl = videoUrl.replace(/\.shtml$/, ".m3u8");
         }
+      } else {
+        if (!videoUrl.endsWith(".shtml")) {
+        }
       }
       const posterUrl = escapeHtml(
         result.items_image ? `https://www.yasyadong.com/data/upload/store/items/1/${result.items_image}` : "https://via.placeholder.com/720x405"
