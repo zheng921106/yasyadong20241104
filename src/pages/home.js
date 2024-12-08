@@ -60,6 +60,7 @@ export default {
                                 background: linear-gradient(to bottom, #1e1e1e, #121212);
                                 color: #fff;
                                 overflow-x: hidden;
+                                font-size: 12px;
                             }
 
                             a {
@@ -184,7 +185,6 @@ export default {
 
                             .tabs-items-content li {
                                 cursor: pointer;
-                                font-size: 16px;
                                 background-color: #444;
                                 border-radius: 5px;
                                 color: #fff;
@@ -210,9 +210,6 @@ export default {
                                     width: calc(23% - 10px); /* 每行显示 4 个 tab */
                                 }
 
-                                .tabs-items-content {
-                                    font-size: 16px;
-                                }
                             }
 
                             /* 手机端 */
