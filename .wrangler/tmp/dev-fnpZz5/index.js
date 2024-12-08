@@ -1055,12 +1055,35 @@ __name(renderHeader, "renderHeader");
 var home_default = {
   async fetch(request, env3, ctx) {
     try {
+      const header = renderHeader("", true);
+      const url = new URL(request.url);
+      const page = parseInt(url.searchParams.get("page")) || 1;
+      const pageSize = 10;
+      const offset = (page - 1) * pageSize;
+      const countQuery = `SELECT COUNT(*) as total
+                                FROM od_items`;
+      const totalResult = await env3.DB.prepare(countQuery).first();
+      const totalItems = totalResult.total;
+      const totalPages = Math.ceil(totalItems / pageSize);
+      const query = `SELECT *
+                           FROM od_items LIMIT ${pageSize}
+                           OFFSET ${offset}`;
+      const results = await env3.DB.prepare(query).all();
+      const maxVisiblePages = 5;
+      const paginationStart = Math.max(1, page - Math.floor(maxVisiblePages / 2));
+      const paginationEnd = Math.min(totalPages, paginationStart + maxVisiblePages - 1);
+      const pagination = `
+    <div class="pagination">
+        <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">\uC774\uC804</a>
+        ${Array.from({ length: paginationEnd - paginationStart + 1 }, (_, i) => paginationStart + i).map((p) => `
+                <a href="?page=${p}" class="${p === page ? "active" : ""}">${p}</a>
+            `).join("")}
+        ${paginationEnd < totalPages ? `<span>...</span><a href="?page=${totalPages}" class="all-pages">${totalPages}</a>` : ""}
+        <a href="?page=${page < totalPages ? page + 1 : totalPages}" class="next">\uB2E4\uC74C</a>
+    </div>
+`;
       let html = `<!DOCTYPE html>
-                <html lang="ko">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Tabs Example</title>
+               ${header}
                         <style lang="scss">
                             ul {
                                 width: 100%;
@@ -1094,7 +1117,6 @@ var home_default = {
 
                         .video-item {
                             width: 300px;
-                            background-color: #333;
                             border-radius: 10px;
                             overflow: hidden;
                             transform: scale(0.9);
@@ -1195,7 +1217,6 @@ var home_default = {
                                 border-radius: 0 0 5px 5px;
                                 padding: 10px;
                                 margin-top: 10px;
-                                background-color: #333;
                             }
 
                             .tabs-items-content.active {
@@ -1291,7 +1312,6 @@ var home_default = {
                                 }
                             }
                         </style>
-                    </head>
                     <body>
                         <div class="tabs">
                             <div class="tabs_items">

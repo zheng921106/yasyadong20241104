@@ -76,7 +76,6 @@ export default {
 
                         .video-item {
                             width: 300px;
-                            background-color: #333;
                             border-radius: 10px;
                             overflow: hidden;
                             transform: scale(0.9);
@@ -177,7 +176,6 @@ export default {
                                 border-radius: 0 0 5px 5px;
                                 padding: 10px;
                                 margin-top: 10px;
-                                background-color: #333;
                             }
 
                             .tabs-items-content.active {
