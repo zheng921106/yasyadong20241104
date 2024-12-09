@@ -12,7 +12,7 @@ export default {
             // 获取总记录数
             const countQuery = `SELECT COUNT(*) as total
                                 FROM od_items
-                                ORDER BY ites_addtime ASC 
+                                ORDER BY items_addtime ASC 
 
                                 `;
             const totalResult = await env.DB.prepare(countQuery).first();
