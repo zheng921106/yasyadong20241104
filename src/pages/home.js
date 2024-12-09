@@ -9,23 +9,26 @@ export default {
             const pageSize = 10;
             const offset = (page - 1) * pageSize;
 
-            // 获取总记录数
-            const countQuery = `SELECT COUNT(*) as total
-                                FROM od_items
-                                ORDER BY items_addtime desc 
-
-                                `;
+// 获取总记录数
+            const countQuery = `
+    SELECT COUNT(*) as total
+    FROM od_items
+`; // 总记录数不需要排序
             const totalResult = await env.DB.prepare(countQuery).first();
             const totalItems = totalResult.total;
             const totalPages = Math.ceil(totalItems / pageSize);
 
-            // 查询当前页数据
-            const query = `SELECT *
-                           FROM od_items LIMIT ${pageSize}
-                           OFFSET ${offset}`;
+// 查询当前页数据
+            const query = `
+    SELECT *
+    FROM od_items
+    ORDER BY items_addtime DESC -- 按时间戳倒序排列
+    LIMIT ${pageSize}
+    OFFSET ${offset}
+`;
             const results = await env.DB.prepare(query).all();
 
-            // 构建分页导航
+// 构建分页导航
             const maxVisiblePages = 5; // 最多显示5个页码
             const paginationStart = Math.max(1, page - Math.floor(maxVisiblePages / 2));
             const paginationEnd = Math.min(totalPages, paginationStart + maxVisiblePages - 1);
@@ -33,7 +36,7 @@ export default {
             const pagination = `
     <div class="pagination">
         <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">이전</a>
-        ${Array.from({length: paginationEnd - paginationStart + 1}, (_, i) => paginationStart + i)
+        ${Array.from({ length: paginationEnd - paginationStart + 1 }, (_, i) => paginationStart + i)
                 .map(p => `
                 <a href="?page=${p}" class="${p === page ? 'active' : ''}">${p}</a>
             `).join('')}
