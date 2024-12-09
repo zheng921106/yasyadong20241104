@@ -29,12 +29,14 @@ export default {
             const results = await env.DB.prepare(query).all();
 
 // 构建分页导航
+            // 构建分页导航
             const maxVisiblePages = 5; // 最多显示5个页码
             const paginationStart = Math.max(1, page - Math.floor(maxVisiblePages / 2));
             const paginationEnd = Math.min(totalPages, paginationStart + maxVisiblePages - 1);
 
             const pagination = `
     <div class="pagination">
+        <a href="?page=1" class="first">첫 페이지</a> <!-- 跳转到第一页 -->
         <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">이전</a>
         ${Array.from({ length: paginationEnd - paginationStart + 1 }, (_, i) => paginationStart + i)
                 .map(p => `
@@ -45,6 +47,7 @@ export default {
                 : ''
             }
         <a href="?page=${page < totalPages ? page + 1 : totalPages}" class="next">다음</a>
+        <a href="?page=${totalPages}" class="last">마지막 페이지</a> <!-- 跳转到最后一页 -->
     </div>
 `;
             let html = `<!DOCTYPE html>
