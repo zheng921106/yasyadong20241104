@@ -11,7 +11,10 @@ export default {
 
             // 获取总记录数
             const countQuery = `SELECT COUNT(*) as total
-                                FROM od_items`;
+                                FROM od_items
+                                ORDER BY ites_addtime ASC 
+
+                                `;
             const totalResult = await env.DB.prepare(countQuery).first();
             const totalItems = totalResult.total;
             const totalPages = Math.ceil(totalItems / pageSize);

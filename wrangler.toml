@@ -1,7 +1,7 @@
 name = "yas1104"
 main = "src/index.js"
 compatibility_date = "2024-10-22"
-compatibility_flags = ["nodejs_compat"]
+compatibility_flags = ["nodejs_compat"] # 启用 Node.js 兼容模式
 
 [observability]
 enabled = true
@@ -13,6 +13,4 @@ database_name = "yasyadong" # 数据库名称（与 Cloudflare 仪表板中的�
 database_id = "171bcdd9-ee81-4fb9-b967-054ff096d273" # 可选，唯一标识数据库
 
 [build]
-upload_format = "modules" # 确保 Workers 使用模块化格式
-node_compat = true        # 启用 Node.js 兼容模式（必要时）
-
+# 移除 `upload_format` 和 `node_compat` 字段
