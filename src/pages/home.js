@@ -1,4 +1,4 @@
-import { renderHeader } from '../components/header/header.js';
+import {renderHeader} from '../components/header/header.js';
 
 export default {
     async fetch(request, env, ctx) {
@@ -11,21 +11,21 @@ export default {
 
 // 获取总记录数
             const countQuery = `
-    SELECT COUNT(*) as total
-    FROM od_items
-`; // 总记录数不需要排序
+                SELECT COUNT(*) as total
+                FROM od_items
+            `; // 总记录数不需要排序
             const totalResult = await env.DB.prepare(countQuery).first();
             const totalItems = totalResult.total;
             const totalPages = Math.ceil(totalItems / pageSize);
 
 // 查询当前页数据
             const query = `
-    SELECT *
-    FROM od_items
-    ORDER BY items_addtime DESC -- 按时间戳倒序排列
-    LIMIT ${pageSize}
-    OFFSET ${offset}
-`;
+                SELECT *
+                FROM od_items
+                ORDER BY items_addtime DESC -- 按时间戳倒序排列
+                    LIMIT ${pageSize}
+                OFFSET ${offset}
+            `;
             const results = await env.DB.prepare(query).all();
 
 // 构建分页导航
@@ -38,7 +38,7 @@ export default {
     <div class="pagination">
         <a href="?page=1" class="first">첫 페이지</a> <!-- 跳转到第一页 -->
         <a href="?page=${page > 1 ? page - 1 : 1}" class="prev">이전</a>
-        ${Array.from({ length: paginationEnd - paginationStart + 1 }, (_, i) => paginationStart + i)
+        ${Array.from({length: paginationEnd - paginationStart + 1}, (_, i) => paginationStart + i)
                 .map(p => `
                 <a href="?page=${p}" class="${p === page ? 'active' : ''}">${p}</a>
             `).join('')}
@@ -50,6 +50,46 @@ export default {
         <a href="?page=${totalPages}" class="last">마지막 페이지</a> <!-- 跳转到最后一页 -->
     </div>
 `;
+            // 查询一级分类
+            const categoriesQuery = `SELECT id, name
+                                     FROM categories
+                                     ORDER BY id ASC`;
+            const categoriesResult = await env.DB.prepare(categoriesQuery).all();
+
+            // 查询所有二级分类
+            const subcategoriesQuery = `SELECT category_id, name
+                                        FROM subcategories
+                                        ORDER BY category_id ASC`;
+            const subcategoriesResult = await env.DB.prepare(subcategoriesQuery).all();
+
+            // 构建分类和子分类结构
+            const categories = categoriesResult.results.map(category => ({
+                id: category.id,
+                name: category.name,
+                subcategories: subcategoriesResult.results
+                    .filter(subcategory => subcategory.category_id === category.id)
+                    .map(subcategory => subcategory.name),
+            }));
+
+            let tabsHtml = '';
+            let tabsContentHtml = '';
+
+            // 动态生成分类和子分类的 HTML
+            categories.forEach((category, index) => {
+                const tabId = `tab${index + 1}`;
+                const contentId = `content${index + 1}`;
+                const isActive = index === 0 ? 'active' : '';
+
+                // Tabs HTML
+                tabsHtml += `<li id="${tabId}" class="${isActive}">${category.name}</li>`;
+
+                // Tabs Content HTML
+                tabsContentHtml += `
+                    <div id="${contentId}" class="tabs-items-content ${isActive}">
+                        ${category.subcategories.map(sub => `<li>${sub}</li>`).join('')}
+                    </div>
+                `;
+            });
             let html = `<!DOCTYPE html>
                ${header}
                         <style lang="scss">
@@ -279,50 +319,13 @@ export default {
                         </style>
                     <body>
                         <div class="tabs">
-                            <div class="tabs_items">
-                                <ul>
-                                    <li id="tab1" class="active">업데이트</li>
-                                    <li id="tab2">배우별</li>
-                                    <li id="tab3">취향별</li>
-                                    <li id="tab4">인기100</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="tabs-content">
-                            <div id="content1" class="tabs-items-content active">
-                                <li>전체</li>
-                                <li>한국</li>
-                                <li>일본</li>
-                                <li>서양</li>
-                                <li>중화권</li>
-                                <li>동남아</li>
-                            </div>
-                            <div id="content2" class="tabs-items-content">
-                                <li>전체1</li>
-                                <li>한국</li>
-                                <li>일본</li>
-                                <li>서양</li>
-                                <li>중화권</li>
-                                <li>동남아</li>
-                            </div>
-                            <div id="content3" class="tabs-items-content">
-                                <li>전체</li>
-                                <li>한국</li>
-                                <li>일본</li>
-                                <li>서양</li>
-                                <li>중화권</li>
-                                <li>동남아</li>
-                            </div>
-                            <div id="content4" class="tabs-items-content">
-                                <li>전체</li>
-                                <li>한국</li>
-                                <li>일본</li>
-                                <li>서양</li>
-                                <li>중화권</li>
-                                <li>동남아</li>
-                            </div>
-                        </div>
+        <ul class="tabs_items">
+            ${tabsHtml}
+        </ul>
+        <div class="tabs-content">
+            ${tabsContentHtml}
+        </div>
+    </div>
                         <div class="video-container">
                     ${results.results.map(row => `
                         <div class="video-item">
@@ -348,35 +351,31 @@ export default {
                         });
                     </script>
                         <script>
-                            // 监听每个 tab 的点击事件
-                            document.querySelectorAll('.tabs_items li').forEach(tab => {
-                                tab.addEventListener('click', function () {
-                                    // 移除所有 tab 的选中状态
-                                    document.querySelectorAll('.tabs_items li').forEach(item => {
-                                        item.classList.remove('active');
-                                    });
-                                    // 设定当前 tab 为选中
-                                    this.classList.add('active');
-                                    
-                                    // 隐藏所有内容区域
-                                    document.querySelectorAll('.tabs-items-content').forEach(content => {
-                                        content.classList.remove('active');
-                                    });
-                                    
-                                    // 获取对应的内容区域并显示
-                                    let targetContent = document.getElementById('content' + this.id.slice(3)); // 获取对应的 content
-                                    targetContent.classList.add('active');
-                                });
-                            });
-                        </script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.tabs_items li').forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // 移除所有选中状态
+                    document.querySelectorAll('.tabs_items li').forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // 隐藏所有内容
+                    document.querySelectorAll('.tabs-items-content').forEach(content => content.classList.remove('active'));
+
+                    // 显示当前内容
+                    const targetContent = document.getElementById('content' + this.id.slice(3));
+                    targetContent.classList.add('active');
+                });
+            });
+        });
+    </script>
                     </body>
                 </html>`;
 
             return new Response(html, {
-                headers: { 'Content-Type': 'text/html;charset=UTF-8' },
+                headers: {'Content-Type': 'text/html;charset=UTF-8'},
             });
         } catch (error) {
-            return new Response(`Error: ${error.message}`, { status: 500 });
+            return new Response(`Error: ${error.message}`, {status: 500});
         }
     },
 };
